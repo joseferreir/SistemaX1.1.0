@@ -23,7 +23,7 @@ public interface UsuarioAdminDAOIF {
 
     public boolean addUsuario(Usuario usuario);
 
-    public boolean remover(String matricula);
+    public boolean remover(int id);
 
     public List<Usuario> buscaTotosUsuarios();
 

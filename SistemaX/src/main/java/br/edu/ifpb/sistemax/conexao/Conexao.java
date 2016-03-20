@@ -21,6 +21,11 @@ public class Conexao implements ConexaoIF {
     private Connection conn;
     private static Properties prop = null;
 
+    private Conexao(Connection conn) {
+        this.conn = conn;
+    }
+    
+
     public Conexao() throws SQLException, IOException, ClassNotFoundException {
         try {
 //            String driver = "org.postgresql.Driver";

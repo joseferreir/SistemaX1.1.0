@@ -15,6 +15,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,7 +29,7 @@ import java.util.logging.Logger;
  */
 public class UsuarioDAO implements UsuarioDAOIF {
 
-    ConexaoIF conn;
+    ConexaoIF conn =null;
 
     public UsuarioDAO() {
     }
@@ -33,7 +38,7 @@ public class UsuarioDAO implements UsuarioDAOIF {
     public boolean editarPirfio(Usuario usuario) {
         boolean result = false;
         PreparedStatement pst = null;
-        ConexaoIF conn = null;
+        
 
         try {
 
@@ -174,6 +179,89 @@ public class UsuarioDAO implements UsuarioDAOIF {
         return resultado;
 
     }
+     @Override
+     public List<Usuario> buscarAtributos(Map<String, String> map) {
+
+        try {
+  PreparedStatement ps = null;
+        ConexaoIF conn = null;
+            
+            conn = new Conexao();
+
+            StringBuilder sql = new StringBuilder("SELECT * FROM usuario WHERE ");
+
+            Set<String> keys = map.keySet();
+            Iterator<String> it = keys.iterator();
+
+            String key;
+            while (it.hasNext()) {
+                key = it.next();
+                sql.append(key);
+                sql.append(" = ");
+                sql.append("'").append(map.get(key)).append("'");
+                if (it.hasNext()) {
+                    sql.append(" AND ");
+                }
+            }
+             ps = conn.getConnection().prepareStatement(sql.toString());
+
+            ResultSet rs = ps.executeQuery();
+            List<Usuario> usuarios = new ArrayList<>();
+
+            while (rs.next()) {
+                Usuario usuario = montarUsuario(rs);
+
+                usuarios.add(usuario);
+            }
+
+            return usuarios;
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+
+            return null;
+        }
+    }
+      public List<Usuario> buscarAtributosNaoExatos(Map<String, String> map) {
+        StringBuilder sql = null;
+        try {
+            ConexaoIF conn = null;
+
+            conn = new Conexao();
+
+            sql = new StringBuilder("SELECT * FROM usuario WHERE ");
+
+            Set<String> keys = map.keySet();
+            Iterator<String> it = keys.iterator();
+
+            String key;
+            while (it.hasNext()) {
+                key = it.next();
+                sql.append(key);
+                sql.append(" ilike ");
+                sql.append("'%").append(map.get(key)).append("%'");
+                if (it.hasNext()) {
+                    sql.append(" AND ");
+                }
+            }
+
+            PreparedStatement pst = conn.getConnection().prepareStatement(sql.toString());
+
+            ResultSet rs = pst.executeQuery();
+            List<Usuario> usuarios = new ArrayList<>();
+
+            while (rs.next()) {
+                Usuario usuario = montarUsuario(rs);
+
+                usuarios.add(usuario);
+            }
+
+            return usuarios;
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
 
     private Usuario montarUsuario(ResultSet rs) throws SQLException {
         Usuario us = new Usuario();

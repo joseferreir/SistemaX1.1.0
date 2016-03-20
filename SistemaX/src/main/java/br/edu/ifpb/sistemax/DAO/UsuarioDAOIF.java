@@ -6,6 +6,8 @@
 package br.edu.ifpb.sistemax.DAO;
 
 import br.edu.ifpb.sistemax.entidades.Usuario;
+import java.util.List;
+import java.util.Map;
 
 /**
  * interface para objetos do tipo Usuario, onde serão contidos, os
@@ -19,18 +21,25 @@ import br.edu.ifpb.sistemax.entidades.Usuario;
  *
  */
 public interface UsuarioDAOIF {
-/**
- * 
- * @param objeto tipo usuario
- * @return Bololean true caso o Usuário seja Atualizado, caso contrario false
- * 
- */
+
+    /**
+     *
+     * @param objeto tipo usuario
+     * @return Bololean true caso o Usuário seja Atualizado, caso contrario
+     * false
+     *
+     */
+    public List<Usuario> buscarAtributos(Map<String, String> map);
+
+    public List<Usuario> buscarAtributosNaoExatos(Map<String, String> map);
+
     public boolean editarPirfio(Usuario usuario);
 
     public Usuario login(String nomeOuEmail, String senha);
 
     public boolean alterarSenha(Usuario u);
-     public Usuario buscaPorEmail(String email);
+
+    public Usuario buscaPorEmail(String email);
 
     public Usuario buscaPorNome(String nome);
 
