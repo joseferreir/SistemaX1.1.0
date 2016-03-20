@@ -164,7 +164,7 @@ public class UsuarioAdmDAO implements UsuarioAdminDAOIF, UsuarioDAOIF {
 
             pst = conn.getConnection().prepareStatement(sql);
 
-            pst.setString(1, PapelUser.ADMISTRAD0R.name());
+            pst.setString(1, PapelUser.Administrador.name());
 
             if (pst.executeUpdate() == 1) {
                 result = true;

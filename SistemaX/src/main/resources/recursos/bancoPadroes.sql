@@ -19,4 +19,4 @@ CREATE TABLE Feriado(
 );
 -- Usuário padrão
 
-INSERT INTO usuario (matricula , nomeUsuario, email,senha,foto, papel) VALUES('000000', 'ADMISTRAD0R', 'admin@gmail.com', 'admin153Chg%','jose2.jpg' ,'ADMISTRAD0R');
+INSERT INTO usuario (matricula , nomeUsuario, email,senha,foto, papel) VALUES('000000', 'Administrador', 'admin@gmail.com', 'admin153Chg%','jose2.jpg' ,'ADMISTRAD0R');

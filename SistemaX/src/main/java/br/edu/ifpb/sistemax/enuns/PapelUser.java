@@ -14,7 +14,7 @@ package br.edu.ifpb.sistemax.enuns;
  * Enumeração que utilizada para determina o papel dos Usuários
  */
 public enum PapelUser {
-     ADMISTRAD0R("ADMISTRAD0R") ,ASSISTENTE_SALA("ASSISTENTE_SALA"), PROFESSOR("PROFESSOR"), MONITOR("MONITOR"), ALUNO("ALUNO");
+     Administrador("Administrador") ,AssistenteDeSala("AssistenteDeSala"), Professor("Professor"), Monitor("Monitor"), Aluno(" Aluno");
     
     public String id;
     
