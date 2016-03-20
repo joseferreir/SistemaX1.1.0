@@ -32,14 +32,17 @@ public class AppControle extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String parametro = request.getParameter("logica");
-            String nomeDaClasse = " br.edu.ifpb.sistemax.command." + parametro;
+        PrintWriter out = response.getWriter();
+        
+            String nomeDaClasse = "br.edu.ifpb.sistemax.command." + parametro;
+           
 
             try {
                 Class classe = Class.forName(nomeDaClasse);
 
                 Command logica = (Command) classe.newInstance();
                  logica.execute(request, response);
-
+                 
 
             } catch (Exception e) {
                 throw new ServletException(

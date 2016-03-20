@@ -42,7 +42,7 @@ public class FadadeUsuario {
     }
 
     public Usuario logar(String login, String senha) {
-        if (login == null) {
+        if (loginBO == null) {
             loginBO = new LoginBO();
         }
         return loginBO.loga(login, senha);

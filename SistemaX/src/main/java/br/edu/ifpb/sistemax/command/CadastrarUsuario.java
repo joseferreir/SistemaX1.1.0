@@ -15,6 +15,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,7 +41,8 @@ public class CadastrarUsuario implements Command {
                     }
                 }
                 request.setAttribute("cadastrou", cadastrou);
-                request.getRequestDispatcher(usuario.getPapel().Administrador.name()+".jsp").forward(request, response);
+                 RequestDispatcher des = request.getServletContext().getRequestDispatcher("/"+usuario.getPapel().name()+".jsp");
+                des.forward(request, response);
                 
             } catch (EmailExistenteException | NomeUsuarioExistenteException ex) {
                 Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);

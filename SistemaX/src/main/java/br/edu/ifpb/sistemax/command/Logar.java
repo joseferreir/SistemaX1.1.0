@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,9 +10,11 @@ import br.edu.ifpb.sistemax.entidades.Usuario;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.edu.ifpb.sistemax.facade.FadadeUsuario;
+import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
@@ -20,6 +23,10 @@ import javax.servlet.http.HttpSession;
  * @author José
  */
 public class Logar implements Command {
+
+    public Logar() {
+    }
+    
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -32,11 +39,14 @@ public class Logar implements Command {
 
                 HttpSession session = request.getSession();
                 session.setAttribute("user", usuario);
-                request.getRequestDispatcher(usuario.getPapel().Administrador.name() + ".jsp").forward(request, response);
+                RequestDispatcher des = request.getServletContext().getRequestDispatcher("/"+usuario.getPapel().name()+".jsp");
+                des.forward(request, response);
+                        
 
             } else {
                 request.setAttribute("logado", false);
-                request.getRequestDispatcher("index.html").forward(request, response);
+                 RequestDispatcher des = request.getServletContext().getRequestDispatcher("/index.html");
+                des.forward(request, response);
             }
         } catch (IOException ex) {
             Logger.getLogger(Logar.class.getName()).log(Level.SEVERE, null, ex);
