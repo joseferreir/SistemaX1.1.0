@@ -17,23 +17,24 @@ import java.util.Map;
  *
  * @author José
  */
-public class CadastrarUsuarioBO {
+public class AtualizarPerfilBO {
 
-    public CadastrarUsuarioBO() {
+    public AtualizarPerfilBO() {
     }
 
     UsuarioAdmDAO dao = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO();
 
-    public Map<String, String> addUsuario(Usuario usuario) throws EmailExistenteException, NomeUsuarioExistenteException {
+    public Map<String, String> editarPerfil(Usuario usuario) throws EmailExistenteException, NomeUsuarioExistenteException  {
         Map<String, String> result = ValidaUsuario(usuario);
 
         if (result.get("passou").equalsIgnoreCase("true")) {
             dao = new UsuarioAdmDAO();
-            if (dao.addUsuario(usuario)) {
+            if (dao.editarPirfio(usuario)) {
                 return result;
             }
-        }else
-        result.put("passou", "false");
+        } else {
+            result.put("passou", "false");
+        }
         return result;
 
     }
@@ -62,18 +63,6 @@ public class CadastrarUsuarioBO {
             resultado.put("matricula", "informe a matricula do usuário ");
         }
 
-        //verificar se o email existe
-        if (dao.buscaPorEmail(usuario.getEmail()) != null) {
-            resultado.put("emailExistente", "o email já existe ");
-            throw new EmailExistenteException();
-        }
-
-        //verificar se o nome de usuario ja existe
-        Usuario nomeExiste = dao.buscaPorNome(usuario.getNome());
-        if (nomeExiste != null) {
-            resultado.put("nomeExistente", "O nome já existe ");
-            throw new NomeUsuarioExistenteException();
-        }
         //verifica o formato do nome
         if (!ValidaUser.validaNome(usuario.getNome())) {
             System.out.println("p1");

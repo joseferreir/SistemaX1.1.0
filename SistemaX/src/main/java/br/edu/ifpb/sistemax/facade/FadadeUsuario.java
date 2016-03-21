@@ -8,8 +8,11 @@ package br.edu.ifpb.sistemax.facade;
 import br.edu.ifpb.sistemax.entidades.Usuario;
 import br.edu.ifpb.sistemax.exeption.EmailExistenteException;
 import br.edu.ifpb.sistemax.exeption.NomeUsuarioExistenteException;
+import br.edu.ifpb.sistemax.model.AtualizarPerfilBO;
+import br.edu.ifpb.sistemax.model.BuscarUsuarioBO;
 import br.edu.ifpb.sistemax.model.CadastrarUsuarioBO;
 import br.edu.ifpb.sistemax.model.LoginBO;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,8 +24,10 @@ public class FadadeUsuario {
     private static FadadeUsuario instancia = null;
     private CadastrarUsuarioBO cadastrarUsuarioBO = null;
     private LoginBO loginBO = null;
+    private BuscarUsuarioBO buscarUsuarioBO = null;
+    private AtualizarPerfilBO atualizarPerfil = null;
 
-    private FadadeUsuario() {
+    protected FadadeUsuario() {
 
     }
 
@@ -48,4 +53,39 @@ public class FadadeUsuario {
         return loginBO.loga(login, senha);
     }
 
+    public List<Usuario> buscarAtributos(Map<String, String> map) {
+        if (buscarUsuarioBO == null) {
+            buscarUsuarioBO = new BuscarUsuarioBO();
+        }
+        return buscarUsuarioBO.buscarAtributos(map);
+    }
+
+    public List<Usuario> buscarAtributosNaoExatos(Map<String, String> map) {
+        if (buscarUsuarioBO == null) {
+            buscarUsuarioBO = new BuscarUsuarioBO();
+        }
+        return buscarUsuarioBO.buscarAtributosNaoExatos(map);
+    }
+
+    public Usuario buscaPorEmail(String email) {
+        if (buscarUsuarioBO == null) {
+            buscarUsuarioBO = new BuscarUsuarioBO();
+        }
+        return buscarUsuarioBO.buscaPorEmail(email);
+
+    }
+
+    public Usuario buscaPorNome(String nome) {
+        if (buscarUsuarioBO == null) {
+            buscarUsuarioBO = new BuscarUsuarioBO();
+        }
+        return buscarUsuarioBO.buscaPorNome(nome);
+    }
+
+    public Map<String, String> atualizarPerfil(Usuario usuario) throws EmailExistenteException, NomeUsuarioExistenteException {
+        if (atualizarPerfil == null) {
+            atualizarPerfil = new AtualizarPerfilBO();
+        }
+        return atualizarPerfil.editarPerfil(usuario);
+    }
 }
