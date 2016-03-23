@@ -9,7 +9,7 @@ package br.edu.ifpb.sistemax.command;
 import br.edu.ifpb.sistemax.entidades.Usuario;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import br.edu.ifpb.sistemax.facade.FadadeUsuario;
+import br.edu.ifpb.sistemax.model.LoginBO;
 import com.sun.corba.se.spi.protocol.RequestDispatcherDefault;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -32,8 +32,8 @@ public class Logar implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         String login = request.getParameter("login");
         String senha = request.getParameter("senha");
-        FadadeUsuario facade = FadadeUsuario.getInstancia();
-        Usuario usuario = facade.logar(login, senha);
+        LoginBO loga = new LoginBO();
+        Usuario usuario = loga.loga(login, senha);
         try {
             if (usuario != null) {
 

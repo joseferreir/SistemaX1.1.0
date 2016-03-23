@@ -6,13 +6,21 @@
 package br.edu.ifpb.sistemax.entidades;
 
 import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
  * @author José
  */
 public class Feriado {
+
     private Integer id;
+    private LocalDate data;
+    private String nome;
+
+    public Feriado() {
+    }
 
     public Integer getId() {
         return id;
@@ -20,11 +28,6 @@ public class Feriado {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-   private LocalDate data;
-   private String nome;
-
-    public Feriado() {
     }
 
     public Feriado(LocalDate data, String nome) {
@@ -73,6 +76,4 @@ public class Feriado {
     public String toString() {
         return "Feriado{" + "data=" + data + ", nome=" + nome + '}';
     }
-    
-   
 }

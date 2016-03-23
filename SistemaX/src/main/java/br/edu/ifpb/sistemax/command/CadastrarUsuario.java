@@ -9,7 +9,7 @@ import br.edu.ifpb.sistemax.entidades.Usuario;
 import br.edu.ifpb.sistemax.enuns.PapelUser;
 import br.edu.ifpb.sistemax.exeption.EmailExistenteException;
 import br.edu.ifpb.sistemax.exeption.NomeUsuarioExistenteException;
-import br.edu.ifpb.sistemax.facade.FadadeUsuario;
+import br.edu.ifpb.sistemax.model.CadastrarUsuarioBO;
 import br.edu.ifpb.sistemax.model.ProcessadorFotos;
 import java.io.IOException;
 import java.util.Map;
@@ -29,13 +29,15 @@ public class CadastrarUsuario implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
+          response.setContentType("text/html;charset=UTF-8");
         try {
+            request.setCharacterEncoding("UTF-8");
             Usuario usuario = montarUsuario(request);
-            FadadeUsuario facade = FadadeUsuario.getInstancia();
+            CadastrarUsuarioBO facade = new CadastrarUsuarioBO();
             boolean cadastrou = false;
             try {
                 if(usuario != null){
-                    Map<String, String> result = facade.cadastrarUsuario(usuario);
+                    Map<String, String> result = facade.addUsuario(usuario);
                     if (result.get("passou").equalsIgnoreCase("true")) {
                         cadastrou = true;
                     }
