@@ -6,10 +6,8 @@
 package br.edu.ifpb.sistemax.controle;
 
 import br.edu.ifpb.sistemax.command.Command;
-import static com.sun.org.glassfish.external.amx.AMXUtil.prop;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.util.Properties;
 import java.util.logging.Level;

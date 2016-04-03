@@ -6,56 +6,109 @@
         <title>Login</title>
 
         <link rel="stylesheet" href="css/login.css" type="text/css" >
+         <link rel="stylesheet" href="css/bootstrap.min.css">
+        
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
 
 
     </head>
-    <script type="text/javascript">
-        function Nova()
-        {
-            location.href = " index.html"
-        }
-    </script> 
+   
 
-    <script type="text/javascript">
-        function Cadastro()
-        {
-            location.href = " cadastroCliente.html"
-        }
-    </script> 
+    
     <body>
+        
         <header> <!--  -->
 
             <img src="img/logo-ifpb.png" title="Logo...">
 
 
         </header>  <!--  -->
+        
+                            <div id="alertaErroLogin" class="alert alert-danger alert-dismissible" role="alert" hidden>
+                                <strong>Falha no login!</strong> Informações de login e senha incorretas.
+                            </div>
         <article>
             <section class="left">
 
-                <form action="AppControle?logica=Logar" method="post" >
+                <form id="formulario" action="AppControle?logica=Logar"  method="post" >
                     <h2>Login</h2>
                     <p>
-                        <label for="useremail" class="i" data-icon="">Email: </label>
-                        <input type="text" name="login" placeholder="Ex: meuemail@email.com" >
+                        <label for="useremail" class="i" data-icon="">login: </label>
+                        <input id="login" type="text" name="login" placeholder="Ex: meuemail@email.com" >
                     </p>
                     <p>
                         <label for="userpassword" class="" data-icon="">Senha: </label>
-                        <input type="password" name="senha" placeholder="Ex: M1nhA53nha" >
+                        <input id="senha" type="password" name="senha" placeholder="Ex: M1nhA53nha" >
                     </p>
-                    <input class="btn" name="login" type="submit" value="Login" >
+                    <input  class=" modal-title-center form-singin-headin" name="login" type="submit" value="Login" >
                     <!--<input class="btn" name="" type="reset" value="Limpar"  >-->
-                    <a href="gerenciausuario.jsp" class="" >Esqueci a senha</a>
-                    <input type="checkbox" name="" value="" class="check">
-                    <label class="label">Lembrar</label>
+                    
+                    
+                    
 
                 </form>
 
             </section>
 
         </article>
-        <footer >   
-            <p>&copy Todos os direitos reservados</p>
-        </footer >  <!--  -->
+        
+          <script src="js/jquery-2.1.4.min.js"></script>
+          <script src="js/bootstrap.min.js"></script>
+        
+        <script>
+              //funções para quando o botão entrar é clicado 
+                $('#btnEntrar').click(function () {
+
+                    var email = $('#login').val();
+                    var pwd = $('#senha').val();
+                    var actionName = "Logar";
+
+//                    $.post('Controller', {'email': email, 'password': pwd, 'action': actionName},
+//                            function (response) {
+//                                if (response === "TRUE") {
+//                                    $(location).attr('href', 'home');
+//                                } else {
+//                                    $('#alertaErroLogin').show(250);
+//                                }
+//                            });
+
+                    $.ajax({
+                        type: "POST",
+                        url: " AppControle",
+//                        dataType: "json",
+//                        contentType: 'application/json',
+//                        data: {email: email, password: pwd, action: actionName},
+                        
+                        data: {"login": email, "senha": pwd, "logica": actionName},
+                        success: function (response) {
+                            if (response === "TRUE") {
+                                
+                                $('#alertaErroLogin').show(250);
+                            }
+                        }
+                    });
+                });
+
+                
+                //função para quando pressiona ENTER dentro do input da senha ou login 
+                $('#email').keypress(function (e) {
+                    if (e.which === 13) { // se digitar um enter nesse componente (password)
+                        $('#btnEntrar').click();
+                    }
+                });
+                
+                $('#password').keypress(function (e) {
+                    if (e.which === 13) { // se digitar um enter nesse componente (password)
+                        $('#btnEntrar').click();
+                    }
+                });
+
+            
+                
+               
+        </script>
     </body>
 </html>

@@ -44,8 +44,9 @@ public class Logar implements Command {
                         
 
             } else {
+                 
                 request.setAttribute("logado", false);
-                 RequestDispatcher des = request.getServletContext().getRequestDispatcher("/index.html");
+                RequestDispatcher des = request.getServletContext().getRequestDispatcher("/paginas/ErroLogin.jsp");
                 des.forward(request, response);
             }
         } catch (IOException ex) {
