@@ -41,29 +41,12 @@ public class Loader {
         UsuarioAdmDAO s = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO();
           Usuario u = new Usuario("000032", "mariaw", "maria2@gmail.com", "wSew12@#32", "foto4", true, PapelUser.Administrador);
         Map<String, String> aa = new HashMap<String, String>();
-       // aa.put("nomeusuario", "d");
-        //   CadastrarUsuarioBO bo = new CadastrarUsuarioBO();
-        // Map<String, String> y = bo.addUsuario(u);
+        aa.put("nomeusuario", "d");
+           CadastrarUsuarioBO bo = new CadastrarUsuarioBO();
+         Map<String, String> y = bo.addUsuario(u);
+         System.err.println("dddddddd"+y.get("passou"));
        
-        
-       // Feriado rr = Factoy.criarFactoy(0).criaFeriadoDAO().buscarPorNome("hohe");
-       // rr.setData(LocalDate.MIN);
-      //   boolean e = Factoy.criarFactoy(0).criaFeriadoDAO().removerData(LocalDate.now());
-        CadastrarFeriadoBo dd = new CadastrarFeriadoBo();
-        Feriado f = new Feriado(LocalDate.now(), "hoje");
-        FeriadoDAO cc =new FeriadoDAO();
-        aa.put("nome", "jjj");
-        cc.buscarAtributosNaoExatos(aa);
-       // try {
-            String c ="C:/Users/José/Desktop/feriados";
-           dd.adicionarFeriados(c, true);
-       // } catch (ParseException ex) {
-         //   Logger.getLogger(Loader.class.getName()).log(Level.SEVERE, null, ex);
-       // }
-            
-            
-        
-        
+       
         
        
     }

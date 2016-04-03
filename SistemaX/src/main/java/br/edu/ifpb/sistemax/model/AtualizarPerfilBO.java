@@ -25,7 +25,7 @@ public class AtualizarPerfilBO {
     UsuarioAdmDAO dao = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO();
 
     public Map<String, String> editarPerfil(Usuario usuario) throws EmailExistenteException, NomeUsuarioExistenteException  {
-        Map<String, String> result = ValidaUsuario(usuario);
+        Map<String, String> result = ValidaUser.validaUsuario(usuario);
 
         if (result.get("passou").equalsIgnoreCase("true")) {
             dao = new UsuarioAdmDAO();
@@ -39,65 +39,5 @@ public class AtualizarPerfilBO {
 
     }
 
-    private Map<String, String> ValidaUsuario(Usuario usuario) throws EmailExistenteException, NomeUsuarioExistenteException {
-
-        UsuarioAdmDAO DAO = new UsuarioAdmDAO();
-        Map<String, String> resultado = new HashMap<>();
-        if (usuario.getPapel() == null) {
-            resultado.put("papel", "informe o papel do usuário ");
-        }
-
-        if (usuario.getNome() == null || usuario.getNome().trim().isEmpty()) {
-            resultado.put("nome", "informe do nome usuário ");
-        }
-
-        if (usuario.getEmail() == null || usuario.getEmail().trim().isEmpty()) {
-            resultado.put("email", "informe o email do usuário ");
-        }
-
-        if (usuario.getSenha() == null || usuario.getNome().trim().isEmpty()) {
-            resultado.put("senha", "informe a senha do usuário ");
-        }
-
-        if (usuario.getMatricula() == null || usuario.getMatricula().trim().isEmpty()) {
-            resultado.put("matricula", "informe a matricula do usuário ");
-        }
-
-        //verifica o formato do nome
-        if (!ValidaUser.validaNome(usuario.getNome())) {
-            System.out.println("p1");
-            resultado.put("NomeInvalido", "O noeme não pode conter caracteres especiais  ");
-        }
-
-        //verifica o formato do email
-        if (!ValidaUser.validarEmail(usuario.getEmail())) {
-
-            resultado.put("emailInvalido", "email invalido");
-        }
-
-        //verifica se a senha possui ao menos 8 caracteres
-        if (usuario.getSenha().length() < 8) {
-            System.out.println("p3");
-            resultado.put("senhaInvalida", "senha Invalida");
-        }
-
-//        verifica se possui ao menos 1 caractere não alfabetico
-        if (!ValidaUser.validaPassword(usuario.getSenha())) {
-            System.out.println("p4");
-            resultado.put("senhaInvalida", "senha Invalida");
-        }
-
-        //verifica se a matricula possui 6 digitos numericos
-        if (!ValidaUser.validaMatricula(usuario.getMatricula())) {
-            System.out.println("p5");
-            resultado.put("matricula", "Invalida");
-        }
-        if (resultado.isEmpty()) {
-            resultado.put("passou", "true");
-        } else {
-            resultado.put("passou", "false");
-        }
-        return resultado;
-    }
 
 }

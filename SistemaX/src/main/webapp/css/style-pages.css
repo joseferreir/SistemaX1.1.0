@@ -1,0 +1,176 @@
+a, a:hover, a:focus{
+	text-decoration: none;
+}
+
+.container-full {
+	margin: 0 auto;
+	width: 100%;
+}
+
+.header-box{
+	width: 200px;
+	height: 100px;
+}
+
+.logo-box{
+	width: 100px;
+	height: 100px;	
+	margin-right: 20px;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right{
+	float: right;
+}
+
+.header-size {
+	height: 140px;
+}
+
+.header-profile{
+	text-align: right;
+}
+
+.header-profile h4{
+	margin-top: 40px;
+}
+.header-title h3{
+	margin-top: 30px;
+}
+
+.profile-img-box{
+	margin-left: 20px;
+}
+
+.logo-img, .profile-img{
+	width: 100px;
+}
+.option-img{
+	width: 75px;
+}
+
+/* breadcrumb customize */
+.breadcrumb {background: rgba(149, 146, 209, 0.7); border: 0px solid rgba(245, 245, 245, 1); border-radius: 4px; display: block;}
+.breadcrumb li {font-size: 12px;}
+.breadcrumb a {color: rgba(255, 255, 255, 1);}
+.breadcrumb a:hover {color: rgba(0, 0, 0, 1);}
+.breadcrumb>.active {color: rgba(255, 255, 255, 1);}
+.breadcrumb>li+li:before {color: rgba(255, 255, 255, 1); content: "\276F\00a0";}
+
+.panel-option{
+	width: 150px;
+	text-align: center;
+	float: left;
+}
+
+.text-align-center{
+	text-align: center;
+}
+
+.panel-option img{
+	margin-bottom: 5px;
+}
+
+.no-margin-right{
+	padding-right: 0;
+}
+
+
+.btn-file {
+	position: relative;
+	overflow: hidden;
+	border-radius: 4px !important;
+}
+
+.btn-file input[type=file] {
+	position: absolute;
+	top: 0;
+	right: 0;
+	min-width: 100%;
+	min-height: 100%;
+	font-size: 100px;
+	text-align: right;
+	filter: alpha(opacity=0);
+	opacity: 0;
+	cursor: inherit;
+	display: block;
+}
+
+.left-block-profile{
+	text-align: center;
+}
+
+.left-block-profile .cadastro-img{
+	width: 200px;
+	margin-bottom: 15px;
+	border-radius: 4px !important;
+}
+
+.align-center{
+	text-align: center;
+}
+
+.modal-footer{
+	padding: 15px;
+}
+
+ .table-hover tbody tr:hover{
+ 	cursor: pointer;
+ }
+
+ /**/
+/*CALENDARIO PERSONALIZADO*/
+/**/
+
+.actived{
+	background-color: rgba(149, 146, 209, 0.7) !important;
+	color: white;
+}
+
+.event div{
+	background-color: #357ebd !important;
+	color: white;
+	border-radius: 5px;
+}
+
+.azul-evento{
+	background-color: #357ebd !important;
+	color: white !important;
+	width: 40px !important;
+}
+
+span.badge-today{
+	background-color: #003366 !important;
+}
+
+div.zabuto_calendar .table td{
+	padding: 10px !important;
+}
+div.zabuto_calendar .table td.dow-clickable:hover{
+	background-color: rgba(149, 146, 209, 0.7) !important;
+	color: white;
+}
+
+.badge-event{
+	background-color: white !important;
+	color: black !important;
+}
+
+.zabuto_calendar{
+	margin: 0px 15px 15px 15px !important;
+}
+div.zabuto_calendar div.legend span{
+	font-size: 12px !important;
+}
+div.zabuto_calendar div.legend {
+	margin-top: 15px !important;
+}
+div.zabuto_calendar div.legend span.badge{
+ 	padding-top: 3px !important;
+}
+/**/
+/*FINAL DE CALENDARIO PERSONALIZADO*/
+/**/

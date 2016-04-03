@@ -86,14 +86,13 @@ public class CadastrarFeriadoBo {
 
     public boolean adicionarFeriados(String pathArquivoFeriados, boolean sobrescrever) throws FileNotFoundException, IOException, ParseException, FeriadoException {
         int taman = pathArquivoFeriados.length();
-        pathArquivoFeriados ="C:/Users/José/Desktop/feriados";
         String extensao = pathArquivoFeriados.substring(taman - 3);
         if (extensao.equalsIgnoreCase("csv")) {
 
             return CadastrarFeriadoBo.this.adicionarFeriados(new FileInputStream(pathArquivoFeriados), sobrescrever);
         }else
-            JOptionPane.showMessageDialog(null, "arquivo envalido");
-            return false;
+            throw new FeriadoException();
+            
     }
 
 }

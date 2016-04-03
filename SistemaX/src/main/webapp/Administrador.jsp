@@ -5,7 +5,8 @@
 --%>
 <%@page import="br.edu.ifpb.sistemax.entidades.Usuario"%>
 <% 
-  Usuario  usuario =(Usuario)  pageContext.getSession().getAttribute("user");
+  Usuario  usuario =(Usuario)  session.getAttribute("user");
+  pageContext.setAttribute("admin", usuario);
 %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,8 +16,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <img src="${usuario.nome}">
-        ${usuario.nome}
+        <img src="${admin.foto}" style="width: 100px ;height: 80px;">
+        <h3>  ${admin.nome}</h3>
         <h1>pagina admin!</h1>
     </body>
 </html>
