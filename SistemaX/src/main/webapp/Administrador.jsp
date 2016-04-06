@@ -19,5 +19,6 @@
         <img src="${admin.foto}" style="width: 100px ;height: 80px;">
         <h3>  ${admin.nome}</h3>
         <h1>pagina admin!</h1>
+        <a href="Teste.jsp">teste</a>
     </body>
 </html>

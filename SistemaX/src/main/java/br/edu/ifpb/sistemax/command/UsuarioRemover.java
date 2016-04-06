@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author José
  */
-public class RemoverUsuario implements Command {
+public class UsuarioRemover implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -29,9 +29,9 @@ public class RemoverUsuario implements Command {
             RequestDispatcher des = request.getServletContext().getRequestDispatcher("/Administrador.jsp");
             des.forward(request, response);
         } catch (ServletException ex) {
-            Logger.getLogger(RemoverUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioRemover.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(RemoverUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioRemover.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

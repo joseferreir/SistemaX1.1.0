@@ -25,7 +25,7 @@ import javax.servlet.http.Part;
  *
  * @author José
  */
-public class CadastrarUsuario implements Command {
+public class UsuarioCadastrar implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -47,13 +47,13 @@ public class CadastrarUsuario implements Command {
                 des.forward(request, response);
                 
             } catch (EmailExistenteException | NomeUsuarioExistenteException ex) {
-                Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(UsuarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
             }
             
         } catch (IOException ex) {
-            Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ServletException ex) {
-            Logger.getLogger(CadastrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioCadastrar.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

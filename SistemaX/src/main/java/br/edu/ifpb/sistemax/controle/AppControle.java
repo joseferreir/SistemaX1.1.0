@@ -13,6 +13,8 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author José
  */
+@WebServlet(name = "AppControle ", urlPatterns = {"/AppControle "})
+//@MultipartConfig
+@MultipartConfig(maxFileSize = 10*1024*1024,maxRequestSize = 20*1024*1024,fileSizeThreshold = 5*1024*1024)
 public class AppControle extends HttpServlet {
 
     /**

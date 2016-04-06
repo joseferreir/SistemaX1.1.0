@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author José
  */
-public class BuscarUsuario implements Command{
+public class UsuarioBuscar implements Command{
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -24,7 +24,7 @@ public class BuscarUsuario implements Command{
             request.setCharacterEncoding("UTF-8");
             
         } catch (UnsupportedEncodingException ex) {
-            Logger.getLogger(BuscarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioBuscar.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
