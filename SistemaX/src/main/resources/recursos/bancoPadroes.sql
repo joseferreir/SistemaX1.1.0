@@ -18,6 +18,7 @@ CREATE TABLE Feriado(
 	PRIMARY KEY (nome,data)
 );
 -- Usuário padrão
+INSERT INTO usuario (matricula , nomeUsuario, email,senha,foto, papel) VALUES('000000', 'Administrador', 'admin@gmail.com', 'xs123Chg%','jose2.jpg' ,'Administrador');
 CREATE TABLE Bloco(
          id SERIAL,
 	nome VARCHAR(50) NOT NULL UNIQUE,
@@ -27,9 +28,9 @@ CREATE TABLE Sala(
         id SERIAL,
 	nome VARCHAR(50) NOT NULL UNIQUE,
         idbloco INT NOT NULL,
-       capacidade INT NOT NULL,
-       status INT NOT NULL,
-       tipo NOT NULL,
+        capacidade INT NOT NULL,
+        status INT NOT NULL,
+        tipo NOT NULL,
         FOREIGN KEY(idbloco) REFERENCES Bloco(id)  ON DELETE CASCADE,
 	PRIMARY KEY (id)
 );
@@ -39,7 +40,7 @@ CREATE SEQUENCE numerosTombamento START 1000000 MAXVALUE 9999999;
 CREATE TABLE Material (
     nome VARCHAR(50) NOT NULL, 
     tombamento INT NOT NULL, 
-    status INT NOT NULL DEFAULT 1, 
+    status VARCHAR(12) NOT NULL DEFAULT Disponivel, 
     local INT DEFAULT NULL, 
     FOREIGN KEY(local) REFERENCES Sala(id),
     PRIMARY KEY (tombamento)
@@ -53,9 +54,16 @@ CREATE TABLE Evento (
     id_responsavel INT NOT NULL,
     data_inicio TIMESTAMP NOT NULL,
     data_termino TIMESTAMP NOT NULL,
-    FOREIGN KEY (id_responsavel) REFERENCES usuario(id)
-);
-Status API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy 
+    FOREIGN KEY (id_responsavel) REFERENCES usuario(id),
+ PRIMARY KEY (id)
 
-INSERT INTO usuario (matricula , nomeUsuario, email,senha,foto, papel) VALUES('000000', 'Administrador', 'admin@gmail.com', 'admin153Chg%','jose2.jpg' ,'ADMISTRAD0R');
+);
+CREATE TABLE alocacao (
+        idsala INT  ON DELETE CASCADE;
+        idevento INT  ON DELETE CASCADE
+        FOREIGN KEY (idsala) REFERENCES Sala(id),
+        FOREIGN KEY (idevento) REFERENCES Evento(id),
+        PRIMARY KEY (idsala,idevento)
+);
+
+
