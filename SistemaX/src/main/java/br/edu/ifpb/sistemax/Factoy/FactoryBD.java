@@ -6,6 +6,8 @@ import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdminDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAOIF;
+import br.edu.ifpb.sistemax.DAO.sala.SalaDAO;
+import br.edu.ifpb.sistemax.DAO.sala.SalaDAOIF;
 
 public class FactoryBD implements FactoryDAOIF {
 
@@ -26,6 +28,11 @@ public class FactoryBD implements FactoryDAOIF {
     @Override
     public FeriadoDAOIF criaFeriadoDAO() {
         return new FeriadoDAO();
+    }
+
+    @Override
+    public SalaDAOIF criaSalaDAO() {
+        return new SalaDAO();
     }
 
 }

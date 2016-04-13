@@ -9,6 +9,7 @@ import br.edu.ifpb.sistemax.Factoy.Factoy;
 import br.edu.ifpb.sistemax.conexao.Conexao;
 import br.edu.ifpb.sistemax.conexao.ConexaoIF;
 import br.edu.ifpb.sistemax.conexao.DataBaseException;
+import br.edu.ifpb.sistemax.entidades.Sala;
 import br.edu.ifpb.sistemax.entidades.Usuario;
 import br.edu.ifpb.sistemax.enuns.PapelUser;
 import java.io.IOException;
@@ -17,10 +18,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -234,6 +233,10 @@ public class UsuarioAdmDAO implements UsuarioAdminDAOIF, UsuarioDAOIF {
         u.setSenha(rs.getString("senha"));
         u.setStatus(rs.getBoolean("status"));
         return u;
+    }
+
+    public boolean addSala(Sala sala) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

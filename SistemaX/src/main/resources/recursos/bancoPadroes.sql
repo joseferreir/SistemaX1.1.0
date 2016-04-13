@@ -30,7 +30,7 @@ CREATE TABLE Sala(
         idbloco INT NOT NULL,
         capacidade INT NOT NULL,
         status INT NOT NULL,
-        tipo NOT NULL,
+        tipo INT NOT NULL,
         FOREIGN KEY(idbloco) REFERENCES Bloco(id)  ON DELETE CASCADE,
 	PRIMARY KEY (id)
 );

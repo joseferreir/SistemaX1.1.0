@@ -9,6 +9,7 @@ import br.edu.ifpb.sistemax.DAO.FeriadoDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdminDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAOIF;
+import br.edu.ifpb.sistemax.DAO.sala.SalaDAOIF;
 
 /**
  *
@@ -21,5 +22,9 @@ public interface FactoryDAOIF {
     public UsuarioAdmDAO criaUsuarioAdmDAO();
 
     public FeriadoDAOIF criaFeriadoDAO();
+    
+    public SalaDAOIF criaSalaDAO();
+    
+    
 
 }
