@@ -31,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
 import jdk.nashorn.internal.runtime.regexp.RegExpFactory;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.TokenType;
 import sun.security.krb5.internal.ccache.CCacheInputStream;
@@ -62,10 +63,18 @@ public class Loader {
 //        System.out.println("Resultado: " + sala2);
 //        
 //deletar sala teste;
-boolean sala3=Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().removerSala(2);
-        System.out.println("Resultado: "+ sala3);
+//boolean sala3=Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().removerSala(2);
+//        System.out.println("Resultado: "+ sala3);
+//buscar sala teste;
+//Sala sala4=Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarSala(1);
+//        System.out.println("Resultado: " + sala4.toString());
+//buscar sala por atributos não exatos;
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("nome", "sala");
 
+        List<Sala> sala5 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarAtributosNaoExatos(map);
 
+        System.out.println("Resultado:"+sala5.get(0).getNome());
     }
 
 }

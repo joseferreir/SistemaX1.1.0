@@ -11,7 +11,15 @@ import br.edu.ifpb.sistemax.conexao.DataBaseException;
 import br.edu.ifpb.sistemax.entidades.Sala;
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -59,7 +67,7 @@ public class SalaDAO implements SalaDAOIF {
 
     @Override
     public boolean atualizarSala(Sala sala) {
-            boolean resultado = false;
+        boolean resultado = false;
         try {
             conexao = new Conexao();
             sql = "UPDATE sala SET nome=?, idBloco=?, capacidade=?, estado=?, tipo=? WHERE id=?";
@@ -85,16 +93,15 @@ public class SalaDAO implements SalaDAOIF {
 
         }
         return resultado;
-        
-        
+
     }
 
     @Override
     public boolean removerSala(int id) {
-    boolean resultado = false;
+        boolean resultado = false;
         try {
             conexao = new Conexao();
-            sql = "DELETE FROM sala WHERE id='"+id+"'";
+            sql = "DELETE FROM sala WHERE id='" + id + "'";
             pst = conexao.getConnection().prepareStatement(sql);
             if (pst.executeUpdate() > 0) {
                 resultado = true;
@@ -114,7 +121,76 @@ public class SalaDAO implements SalaDAOIF {
 
     @Override
     public Sala buscarSala(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        Sala resultado = null;
 
+        try {
+            conexao = new Conexao();
+            String consulta = "SELECT * FROM sala WHERE id='" + id + "'";
+            PreparedStatement ps = conexao.getConnection().prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                resultado = montarSala(rs);
+            }
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(SalaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultado;
+
+    }
+       
+    @Override
+    public List<Sala> buscarAtributosNaoExatos(Map<String, String> map) {
+        StringBuilder sql = null;
+        try {
+            ConexaoIF conexao = null;
+
+            conexao = new Conexao();
+
+            sql = new StringBuilder("SELECT * FROM sala WHERE ");
+
+            Set<String> keys = map.keySet();
+            Iterator<String> it = keys.iterator();
+
+            String key;
+            while (it.hasNext()) {
+                key = it.next();
+                sql.append(key);
+                sql.append(" ilike ");
+                sql.append("'%").append(map.get(key)).append("%'");
+                if (it.hasNext()) {
+                    sql.append(" AND ");
+                }
+            }
+
+            PreparedStatement pst = conexao.getConnection().prepareStatement(sql.toString());
+
+            ResultSet rs = pst.executeQuery();
+            List<Sala> salas = new ArrayList<>();
+
+            while (rs.next()) {
+                Sala sala = montarSala(rs);
+
+                salas.add(sala);
+            }
+
+            return salas;
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+    
+    private Sala montarSala(ResultSet rs) throws SQLException {
+        Sala sala = new Sala();
+        sala.setId(rs.getInt("id"));
+        sala.setNome(rs.getString("nome"));
+        sala.setIdBloco(rs.getInt("idBloco"));
+        sala.setCapacidade(rs.getInt("capacidade"));
+        sala.setEstado(rs.getInt("estado"));
+        sala.setTipo(rs.getInt("tipo"));
+        return sala;
+    }
 }

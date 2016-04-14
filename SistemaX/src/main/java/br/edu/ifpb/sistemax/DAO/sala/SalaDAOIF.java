@@ -6,6 +6,8 @@
 package br.edu.ifpb.sistemax.DAO.sala;
 
 import br.edu.ifpb.sistemax.entidades.Sala;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -15,5 +17,6 @@ public interface SalaDAOIF {
     public boolean addSala(Sala sala);
     public boolean atualizarSala (Sala sala);
     public boolean removerSala(int id);
-    public Sala buscarSala (int id);  
+    public Sala buscarSala (int id);
+    public List<Sala> buscarAtributosNaoExatos(Map<String, String> map);
 }

@@ -221,7 +221,7 @@ public class UsuarioDAO implements UsuarioDAOIF {
             return null;
         }
     }
-      public List<Usuario> buscarAtributosNaoExatos(Map<String, String> map) {
+     public List<Usuario> buscarAtributosNaoExatos(Map<String, String> map) {
         StringBuilder sql = null;
         try {
             ConexaoIF conn = null;
