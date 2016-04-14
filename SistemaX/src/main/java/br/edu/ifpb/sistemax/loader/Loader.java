@@ -7,8 +7,10 @@ package br.edu.ifpb.sistemax.loader;
 
 import br.edu.ifpb.sistemax.DAO.FeriadoDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
+import br.edu.ifpb.sistemax.DAO.sala.SalaDAO;
 import br.edu.ifpb.sistemax.Factoy.Factoy;
 import br.edu.ifpb.sistemax.entidades.Feriado;
+import br.edu.ifpb.sistemax.entidades.Sala;
 import br.edu.ifpb.sistemax.entidades.Usuario;
 import br.edu.ifpb.sistemax.enuns.PapelUser;
 import br.edu.ifpb.sistemax.exeption.EmailExistenteException;
@@ -29,6 +31,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import jdk.nashorn.internal.runtime.regexp.RegExpFactory;
 import jdk.nashorn.internal.runtime.regexp.joni.constants.TokenType;
 import sun.security.krb5.internal.ccache.CCacheInputStream;
 
@@ -38,15 +41,17 @@ import sun.security.krb5.internal.ccache.CCacheInputStream;
  */
 public class Loader {
     public static void main(String[] args) throws EmailExistenteException, NomeUsuarioExistenteException, FeriadoException, IOException, FileNotFoundException, ParseException {
-        UsuarioAdmDAO s = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO();
-          Usuario u = new Usuario("000032", "mariaw", "maria2@gmail.com", "wSew12@#32", "foto4", true, PapelUser.Administrador);
-        Map<String, String> aa = new HashMap<String, String>();
-        aa.put("nomeusuario", "d");
-           CadastrarUsuarioBO bo = new CadastrarUsuarioBO();
-         Map<String, String> y = bo.addUsuario(u);
-         System.err.println("dddddddd"+y.get("passou"));
-       
-       
+//        UsuarioAdmDAO s = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO();
+//          Usuario u = new Usuario("000032", "mariaw", "maria2@gmail.com", "wSew12@#32", "foto4", true, PapelUser.Administrador);
+//        Map<String, String> aa = new HashMap<String, String>();
+//        aa.put("nomeusuario", "d");
+//           CadastrarUsuarioBO bo = new CadastrarUsuarioBO();
+//         Map<String, String> y = bo.addUsuario(u);
+//         System.err.println("dddddddd"+y.get("passou"));
+//         
+         Sala sala0 = new Sala ("sala1",1,40, 1, 1);
+         boolean sala1 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().addSala(sala0);
+        System.out.println("Resultado: "+ sala1);
         
        
     }

@@ -8,4 +8,5 @@ package br.edu.ifpb.sistemax.command.Sala;
 public class SalaCadastrar {
     
     
+    
 }

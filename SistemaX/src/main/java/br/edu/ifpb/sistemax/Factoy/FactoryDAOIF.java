@@ -24,7 +24,5 @@ public interface FactoryDAOIF {
     public FeriadoDAOIF criaFeriadoDAO();
     
     public SalaDAOIF criaSalaDAO();
-    
-    
-
+   
 }

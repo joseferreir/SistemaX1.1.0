@@ -16,6 +16,15 @@ public class Sala {
     public Sala(){
     }
 
+    public Sala(String nome, int idBloco, int capacidade, int estado, int tipo) {
+        this.nome = nome;
+        this.idBloco = idBloco;
+        this.capacidade = capacidade;
+        this.estado = estado;
+        this.tipo = tipo;
+    }
+    
+
     public int getId() {
         return id;
     }
