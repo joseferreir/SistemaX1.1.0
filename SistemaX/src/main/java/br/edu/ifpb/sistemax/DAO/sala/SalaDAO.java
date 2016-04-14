@@ -59,12 +59,57 @@ public class SalaDAO implements SalaDAOIF {
 
     @Override
     public boolean atualizarSala(Sala sala) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            boolean resultado = false;
+        try {
+            conexao = new Conexao();
+            sql = "UPDATE sala SET nome=?, idBloco=?, capacidade=?, estado=?, tipo=? WHERE id=?";
+            pst = conexao.getConnection().prepareStatement(sql);
+            pst.setString(1, sala.getNome());
+            pst.setInt(2, sala.getIdBloco());
+            pst.setInt(3, sala.getCapacidade());
+            pst.setInt(4, sala.getEstado());
+            pst.setInt(5, sala.getTipo());
+            pst.setInt(6, sala.getId());
+            if (pst.executeUpdate() > 0) {
+                resultado = true;
+            }
+        } catch (SQLException | ClassNotFoundException | IOException e) {
+            System.out.println("ERRO!" + e);
+
+        } finally {
+            try {
+                conexao.closeAll(pst);
+            } catch (DataBaseException ex) {
+                System.err.println("ERRO!" + ex);
+            }
+
+        }
+        return resultado;
+        
+        
     }
 
     @Override
     public boolean removerSala(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    boolean resultado = false;
+        try {
+            conexao = new Conexao();
+            sql = "DELETE FROM sala WHERE id='"+id+"'";
+            pst = conexao.getConnection().prepareStatement(sql);
+            if (pst.executeUpdate() > 0) {
+                resultado = true;
+            }
+        } catch (SQLException | ClassNotFoundException | IOException e) {
+            System.out.println("ERRO!" + e);
+        } finally {
+            try {
+                conexao.closeAll(pst);
+            } catch (DataBaseException ex) {
+                System.err.println("ERRO!" + ex);
+            }
+
+        }
+        return resultado;
     }
 
     @Override

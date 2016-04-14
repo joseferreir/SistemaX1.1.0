@@ -40,6 +40,7 @@ import sun.security.krb5.internal.ccache.CCacheInputStream;
  * @author José
  */
 public class Loader {
+
     public static void main(String[] args) throws EmailExistenteException, NomeUsuarioExistenteException, FeriadoException, IOException, FileNotFoundException, ParseException {
 //        UsuarioAdmDAO s = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO();
 //          Usuario u = new Usuario("000032", "mariaw", "maria2@gmail.com", "wSew12@#32", "foto4", true, PapelUser.Administrador);
@@ -49,11 +50,22 @@ public class Loader {
 //         Map<String, String> y = bo.addUsuario(u);
 //         System.err.println("dddddddd"+y.get("passou"));
 //         
-         Sala sala0 = new Sala ("sala1",1,40, 1, 1);
-         boolean sala1 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().addSala(sala0);
-        System.out.println("Resultado: "+ sala1);
-        
-       
+
+//##adicionar sala teste;
+//        Sala sala0 = new Sala("sala1", 1, 40, 1, 1);
+//        boolean sala1 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().addSala(sala0);
+//        System.out.println("Resultado: " + sala1);
+//atualizar sala teste;    
+//        Sala sala0 = new Sala("sala2", 1, 35, 1, 1);
+//        sala0.setId(1);
+//        boolean sala2 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().atualizarSala(sala0);
+//        System.out.println("Resultado: " + sala2);
+//        
+//deletar sala teste;
+boolean sala3=Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().removerSala(2);
+        System.out.println("Resultado: "+ sala3);
+
+
     }
-    
+
 }
