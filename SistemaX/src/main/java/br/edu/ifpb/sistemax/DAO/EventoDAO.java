@@ -44,16 +44,16 @@ public class EventoDAO implements EventoDAOIF {
      */
     @Override
     public boolean add(Evento evento) {
-        sql = "INSERT INTO Evento (nome , descricao, numParticipantes,  idResponsavel , dataInicio,  dataTermino)"
-                + "VALUES(?, ?, ?, ? ,? ,?,?) ";
+        sql = "INSERT INTO Evento (nome , descricao,  numeroParticipantes,  idResponsavel , dataInicio,  dataTermino)"
+                + "VALUES(?, ?, ?, ? ,? ,?) ";
         return persinteNoBD(evento, sql, addEvento);
 
     }
 
     @Override
     public boolean Alterar(Evento evento) {
-        sql = "UPFATE Evento SET nome=?, descricao=?, numParticipantes=?,  idResponsavel=? , dataInicio=?,  dataTermino=? WHERE id=?";
-        return persinteNoBD(evento, sql, addEvento);
+        sql = "UPDATE Evento SET nome=?, descricao=?,  numeroParticipantes=?,  idResponsavel=? , dataInicio=?,  dataTermino=? WHERE id=?";
+        return persinteNoBD(evento, sql, setEvento);
     }
 
     @Override
@@ -112,12 +112,11 @@ public class EventoDAO implements EventoDAOIF {
 
             pst.setString(1, evento.getNome());
             pst.setString(2, evento.getDescricao());
-            pst.setInt(3, evento.getNumParticipantes());
-            pst.setInt(4, EstadoEvento.valueOf(evento.getEstado()).id);
+            pst.setInt(3, evento.getNumParticipantes());           
              Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorNome(evento.getResponsavel());
-            pst.setInt(5,responsavel.getId());
-            pst.setTimestamp(6, evento.getDataInicio());
-            pst.setTimestamp(7, evento.getDataTermino());
+            pst.setInt(4,responsavel.getId());
+            pst.setTimestamp(5, evento.getDataInicio());
+            pst.setTimestamp(6, evento.getDataTermino());
             if (operacao == setEvento) {
                 pst.setInt(7, evento.getId());
             }
@@ -166,7 +165,7 @@ public class EventoDAO implements EventoDAOIF {
         e.setId(rs.getInt("id"));
         e.setNome(rs.getString("nome"));
         e.setDescricao(rs.getString("descricao"));
-        e.setDataInicio(rs.getTimestamp(" dataInicio"));
+        e.setDataInicio(rs.getTimestamp("dataInicio"));
         e.setDataTermino(rs.getTimestamp("dataTermino"));
         Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorId(rs.getInt("idResponsavel"));
         e.setResponsavel(responsavel.getNome());

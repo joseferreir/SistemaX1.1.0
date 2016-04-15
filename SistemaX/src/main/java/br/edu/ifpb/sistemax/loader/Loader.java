@@ -5,10 +5,12 @@
  */
 package br.edu.ifpb.sistemax.loader;
 
+import br.edu.ifpb.sistemax.DAO.EventoDAO;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
 import br.edu.ifpb.sistemax.DAO.sala.SalaDAO;
 import br.edu.ifpb.sistemax.Factoy.Factoy;
+import br.edu.ifpb.sistemax.entidades.Evento;
 import br.edu.ifpb.sistemax.entidades.Feriado;
 import br.edu.ifpb.sistemax.entidades.Sala;
 import br.edu.ifpb.sistemax.entidades.Usuario;
@@ -22,7 +24,9 @@ import br.edu.ifpb.sistemax.model.CadastrarUsuarioBO;
 import static java.awt.PageAttributes.MediaType.C;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.ParseException;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
@@ -69,12 +73,30 @@ public class Loader {
 //Sala sala4=Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarSala(1);
 //        System.out.println("Resultado: " + sala4.toString());
 //buscar sala por atributos não exatos;
-        Map<String, String> map = new HashMap<String, String>();
-        map.put("nome", "sala");
-
-        List<Sala> sala5 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarAtributosNaoExatos(map);
-
-        System.out.println("Resultado:"+sala5.get(0).getNome());
+//        Map<String, String> map = new HashMap<String, String>();
+//        map.put("nome", "sala");
+//
+//        List<Sala> sala5 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarAtributosNaoExatos(map);
+//
+//        System.out.println("Resultado:"+sala5.get(0).getNome());
+        Timestamp i = Timestamp.from(Instant.now());
+        Timestamp f = Timestamp.from(Instant.now());
+        Evento e = new Evento();
+        e.setDataInicio(i);
+        e.setDataTermino(f);
+        e.setDescricao("testo 2");
+                e.setNome("padroes 2");
+                e.setNumParticipantes(20);
+                e.setResponsavel("Administrador");
+                e.setId(1);
+                EventoDAO dao = new EventoDAO();
+        //  boolean p = dao.add(e);
+//                  System.err.println("resultado "+p);
+//                UsuarioAdmDAO s = new UsuarioAdmDAO();
+//        Usuario u = s.buscaPorId(1);
+//       // System.err.println("uuu "+u.getNome());
+        Evento rr = dao.buscaPorId(1);
+        System.err.println("eeee  "+rr.getNome());
     }
 
 }

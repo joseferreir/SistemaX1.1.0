@@ -18,7 +18,6 @@ public class Evento {
     private String descricao;
     private int numParticipantes;
     private String responsavel;
-    private String estado;
     private Timestamp dataInicio;
     private Timestamp dataTermino;
 
@@ -62,13 +61,7 @@ public class Evento {
         this.responsavel = responsavel;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
+   
 
     public Timestamp getDataInicio() {
         return dataInicio;
