@@ -42,5 +42,6 @@ public interface UsuarioDAOIF {
     public Usuario buscaPorEmail(String email);
 
     public Usuario buscaPorNome(String nome);
+     public Usuario buscaPorId(int idUsuario);
 
 }

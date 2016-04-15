@@ -44,7 +44,7 @@ public class UsuarioAdmDAO implements UsuarioAdminDAOIF, UsuarioDAOIF {
         try {
             conn = new Conexao();
             operacao = "INSERT INTO usuario (matricula , nomeUsuario, email, senha ,foto, papel)"
-                    + "VALUES(?, ?, ?, ? ,? ,?) ";;
+                    + "VALUES(?, ?, ?, ? ,? ,?) ";
             pst = conn.getConnection().prepareStatement(operacao);
 
             pst.setString(1, usuario.getMatricula());
@@ -235,8 +235,11 @@ public class UsuarioAdmDAO implements UsuarioAdminDAOIF, UsuarioDAOIF {
         return u;
     }
 
-    public boolean addSala(Sala sala) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public Usuario buscaPorId(int idUsuario) {
+         return Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorId(idUsuario);
     }
+
+  
 
 }

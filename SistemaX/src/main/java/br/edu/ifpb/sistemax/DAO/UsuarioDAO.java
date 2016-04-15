@@ -276,4 +276,26 @@ public class UsuarioDAO implements UsuarioDAOIF {
 
     }
 
+    @Override
+    public Usuario buscaPorId(int idUsuario) {
+          Usuario resultado = null;
+
+        try {
+            conn = new Conexao();
+            String consulta = "SELECT * FROM Usuario WHERE id = '" + idUsuario + "'";
+            PreparedStatement ps = conn.getConnection().prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                resultado = montarUsuario(rs);
+            }
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultado;
+
+    }
+
 }
