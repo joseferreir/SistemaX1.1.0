@@ -38,7 +38,7 @@ public class FactoryBD implements FactoryDAOIF {
     }
 
     @Override
-    public EventoDAOIF criaeventoDAO() {
+    public EventoDAOIF criaEventoDAO() {
         return new EventoDAO();
     }
 

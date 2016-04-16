@@ -26,6 +26,6 @@ public interface FactoryDAOIF {
 
     public SalaDAOIF criaSalaDAO();
 
-    public EventoDAOIF criaeventoDAO();
+    public EventoDAOIF criaEventoDAO();
 
 }
