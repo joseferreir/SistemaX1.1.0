@@ -5,6 +5,8 @@
  */
 package br.edu.ifpb.sistemax.entidades;
 
+import br.edu.ifpb.sistemax.state.EventoPendente;
+import br.edu.ifpb.sistemax.state.EventoState;
 import java.sql.Timestamp;
 
 /**
@@ -20,6 +22,12 @@ public class Evento {
     private String responsavel;
     private Timestamp dataInicio;
     private Timestamp dataTermino;
+    private EventoState estado;
+
+    public Evento() {
+        this.estado = new EventoPendente();
+    }
+    
 
     public int getId() {
         return id;
@@ -77,6 +85,25 @@ public class Evento {
 
     public void setDataTermino(Timestamp dataTermino) {
         this.dataTermino = dataTermino;
+    }
+
+    public EventoState getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EventoState estado) {
+        this.estado = estado;
+    }
+     public void pendente(){
+         this.estado.pendente();
+     }
+
+    public void emAndatento(){
+        this.estado.emAndatento();
+    }
+
+    public void agardando(){
+        this.estado.agardando();
     }
 
   

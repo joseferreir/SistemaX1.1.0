@@ -11,17 +11,14 @@ import br.edu.ifpb.sistemax.entidades.Evento;
 import br.edu.ifpb.sistemax.entidades.Usuario;
 import br.edu.ifpb.sistemax.enuns.EstadoEvento;
 import java.io.IOException;
-import static java.lang.reflect.Array.set;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.eclipse.persistence.internal.core.helper.CoreClassConstants;
+import br.edu.ifpb.sistemax.enuns.EstadoEvento;
 
 /**
  *
@@ -52,7 +49,7 @@ public class EventoDAO implements EventoDAOIF {
 
     @Override
     public boolean Alterar(Evento evento) {
-        sql = "UPDATE Evento SET nome=?, descricao=?,  numeroParticipantes=?,  idResponsavel=? , dataInicio=?,  dataTermino=? WHERE id=?";
+        sql = "UPDATE Evento SET nome=?, descricao=?,  numeroParticipantes=?,  idResponsavel=? , dataInicio=?,  dataTermino=?,estado=? WHERE id=?";
         return persinteNoBD(evento, sql, setEvento);
     }
 
@@ -112,13 +109,14 @@ public class EventoDAO implements EventoDAOIF {
 
             pst.setString(1, evento.getNome());
             pst.setString(2, evento.getDescricao());
-            pst.setInt(3, evento.getNumParticipantes());           
-             Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorNome(evento.getResponsavel());
-            pst.setInt(4,responsavel.getId());
+            pst.setInt(3, evento.getNumParticipantes());
+            Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorNome(evento.getResponsavel());
+            pst.setInt(4, responsavel.getId());
             pst.setTimestamp(5, evento.getDataInicio());
             pst.setTimestamp(6, evento.getDataTermino());
+            pst.setInt(7, EstadoEvento.valueOf(evento.getEstado().getClass().getSimpleName()).id);
             if (operacao == setEvento) {
-                pst.setInt(7, evento.getId());
+                pst.setInt(8, evento.getId());
             }
             if (pst.executeUpdate() > 0) {
                 result = true;
@@ -170,6 +168,21 @@ public class EventoDAO implements EventoDAOIF {
         Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorId(rs.getInt("idResponsavel"));
         e.setResponsavel(responsavel.getNome());
         e.setNumParticipantes(rs.getInt("numeroParticipantes"));
+        int op = rs.getInt("estado");
+
+        switch (op) {
+            
+            case 2:
+                e.agardando();
+                System.err.println("eeeee" +op);
+                break;
+            case 3:
+                e.emAndatento();
+                break;
+            default:
+                e.pendente();
+
+        }
         return e;
 
     }

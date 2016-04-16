@@ -89,14 +89,15 @@ public class Loader {
                 e.setNumParticipantes(20);
                 e.setResponsavel("Administrador");
                 e.setId(1);
+                e.emAndatento();
                 EventoDAO dao = new EventoDAO();
-        //  boolean p = dao.add(e);
-//                  System.err.println("resultado "+p);
+          boolean p = dao.Alterar(e);
+                  System.err.println("resultado "+p);
 //                UsuarioAdmDAO s = new UsuarioAdmDAO();
 //        Usuario u = s.buscaPorId(1);
 //       // System.err.println("uuu "+u.getNome());
         Evento rr = dao.buscaPorId(1);
-        System.err.println("eeee  "+rr.getNome());
+        System.err.println("eeee  "+rr.getEstado().getClass().getSimpleName());
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.sistemax.Factoy;
 
+import br.edu.ifpb.sistemax.DAO.EventoDAOIF;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdminDAOIF;
@@ -22,7 +23,9 @@ public interface FactoryDAOIF {
     public UsuarioAdmDAO criaUsuarioAdmDAO();
 
     public FeriadoDAOIF criaFeriadoDAO();
-    
+
     public SalaDAOIF criaSalaDAO();
-   
+
+    public EventoDAOIF criaeventoDAO();
+
 }

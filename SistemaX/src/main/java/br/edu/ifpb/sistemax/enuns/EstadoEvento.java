@@ -10,7 +10,7 @@ package br.edu.ifpb.sistemax.enuns;
  * @author José
  */
 public enum EstadoEvento {
-     pendente(1), agendado(2), emAndamento(3);
+     EventoPendente(1),  EventoAgardando(2), EventoEmAndatento(3);
 
     public int id;
     

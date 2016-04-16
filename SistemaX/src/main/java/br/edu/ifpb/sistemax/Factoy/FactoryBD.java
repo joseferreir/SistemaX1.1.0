@@ -1,5 +1,7 @@
 package br.edu.ifpb.sistemax.Factoy;
 
+import br.edu.ifpb.sistemax.DAO.EventoDAO;
+import br.edu.ifpb.sistemax.DAO.EventoDAOIF;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAO;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
@@ -33,6 +35,11 @@ public class FactoryBD implements FactoryDAOIF {
     @Override
     public SalaDAOIF criaSalaDAO() {
         return new SalaDAO();
+    }
+
+    @Override
+    public EventoDAOIF criaeventoDAO() {
+        return new EventoDAO();
     }
 
 }
