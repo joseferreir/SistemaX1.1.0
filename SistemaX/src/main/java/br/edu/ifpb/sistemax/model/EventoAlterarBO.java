@@ -14,7 +14,7 @@ import java.util.Map;
  *
  * @author José
  */
-public class EventoAlterar {
+public class EventoAlterarBO {
      public Map<String, String> alterarEvento(Evento evento) {
         EventoValidar valida = new EventoValidar();
         Map<String, String> erros = valida.validarEvento(evento);

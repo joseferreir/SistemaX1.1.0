@@ -10,7 +10,7 @@ import br.edu.ifpb.sistemax.entidades.Usuario;
 import br.edu.ifpb.sistemax.enuns.PapelUser;
 import br.edu.ifpb.sistemax.exeption.EmailExistenteException;
 import br.edu.ifpb.sistemax.exeption.NomeUsuarioExistenteException;
-import br.edu.ifpb.sistemax.model.CadastrarUsuarioBO;
+import br.edu.ifpb.sistemax.model.UsuarioCadastrarBO;
 import br.edu.ifpb.sistemax.model.ProcessadorFotos;
 import java.io.IOException;
 import java.util.Map;
@@ -34,7 +34,7 @@ public class UsuarioCadastrar implements Command {
         try {
             request.setCharacterEncoding("UTF-8");
             Usuario usuario = montarUsuario(request);
-            CadastrarUsuarioBO facade = new CadastrarUsuarioBO();
+            UsuarioCadastrarBO facade = new UsuarioCadastrarBO();
             boolean cadastrou = false;
             try {
                 if(usuario != null){

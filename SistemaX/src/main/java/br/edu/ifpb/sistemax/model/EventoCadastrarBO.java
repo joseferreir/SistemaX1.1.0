@@ -18,7 +18,7 @@ import java.util.Map;
  */
 
 
-public class EventoCadastrar {
+public class EventoCadastrarBO {
 
     public Map<String, String> cadastrarEvento(Evento evento) {
         EventoValidar valida = new EventoValidar();

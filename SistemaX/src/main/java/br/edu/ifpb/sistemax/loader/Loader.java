@@ -18,9 +18,9 @@ import br.edu.ifpb.sistemax.enuns.PapelUser;
 import br.edu.ifpb.sistemax.exeption.EmailExistenteException;
 import br.edu.ifpb.sistemax.exeption.FeriadoException;
 import br.edu.ifpb.sistemax.exeption.NomeUsuarioExistenteException;
-import br.edu.ifpb.sistemax.model.BuscarFeriado;
+import br.edu.ifpb.sistemax.model.FeriadoBuscar;
 import br.edu.ifpb.sistemax.model.CadastrarFeriadoBo;
-import br.edu.ifpb.sistemax.model.CadastrarUsuarioBO;
+import br.edu.ifpb.sistemax.model.UsuarioCadastrarBO;
 import static java.awt.PageAttributes.MediaType.C;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -51,7 +51,7 @@ public class Loader {
 //          Usuario u = new Usuario("000032", "mariaw", "maria2@gmail.com", "wSew12@#32", "foto4", true, PapelUser.Administrador);
 //        Map<String, String> aa = new HashMap<String, String>();
 //        aa.put("nomeusuario", "d");
-//           CadastrarUsuarioBO bo = new CadastrarUsuarioBO();
+//           UsuarioCadastrarBO bo = new UsuarioCadastrarBO();
 //         Map<String, String> y = bo.addUsuario(u);
 //         System.err.println("dddddddd"+y.get("passou"));
 //         

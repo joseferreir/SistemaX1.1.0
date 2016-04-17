@@ -23,11 +23,11 @@ import javax.swing.JOptionPane;
 public class CadastrarFeriadoBo {
 
     private FeriadoDAO dao;
-    private BuscarFeriado busca;
+    private FeriadoBuscar busca;
 
     public boolean adicionarFeriado(Feriado feriado, boolean sobrescrever) throws FeriadoException {
 
-        if (VerificaFeriado.verificarFeriado(feriado)) {
+        if (FeriadoVerifica.verificarFeriado(feriado)) {
             if (dao == null) {
                 dao = new FeriadoDAO();
             }
@@ -35,7 +35,7 @@ public class CadastrarFeriadoBo {
             if (sobrescrever) {
 
                 if (busca == null) {
-                    busca = new BuscarFeriado();
+                    busca = new FeriadoBuscar();
                 }
 
                 if (busca.feriadoIsRepetido(feriado)) {
@@ -71,7 +71,7 @@ public class CadastrarFeriadoBo {
             } catch (Exception ex) {
                 throw new FeriadoException();
             }
-            if (!VerificaFeriado.verificarFeriado(feriado)) {
+            if (!FeriadoVerifica.verificarFeriado(feriado)) {
                 throw new FeriadoException();
             }
 

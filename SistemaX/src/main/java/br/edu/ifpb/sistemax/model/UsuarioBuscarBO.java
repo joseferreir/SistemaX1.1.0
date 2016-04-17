@@ -14,9 +14,9 @@ import java.util.Map;
  *
  * @author José
  */
-public class BuscarUsuarioBO {
+public class UsuarioBuscarBO {
 
-    public BuscarUsuarioBO() {
+    public UsuarioBuscarBO() {
     }
       public List<Usuario> buscarAtributos(Map<String, String> map){
        return Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscarAtributos(map);

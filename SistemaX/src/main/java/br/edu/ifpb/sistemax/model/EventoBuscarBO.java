@@ -14,7 +14,11 @@ import java.util.List;
  *
  * @author José
  */
-public class EventoBuscar {
+public class EventoBuscarBO {
+
+    public EventoBuscarBO() {
+    }
+    
     private  EventoDAOIF eventoDAO = Factoy.criarFactoy(Factoy.DAO_BD).criaEventoDAO();
      public Evento buscaPorId(int id){
        return eventoDAO.buscaPorId(id);

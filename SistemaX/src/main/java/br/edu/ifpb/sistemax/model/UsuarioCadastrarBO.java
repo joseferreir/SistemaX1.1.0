@@ -17,9 +17,9 @@ import java.util.Map;
  *
  * @author José
  */
-public class CadastrarUsuarioBO {
+public class UsuarioCadastrarBO {
 
-    public CadastrarUsuarioBO() {
+    public UsuarioCadastrarBO() {
     }
 
     UsuarioAdmDAO dao = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO();

@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  *
  * @author José
  */
-public class VerificaFeriado {
+public class FeriadoVerifica {
 
     public static boolean verificarFeriado(Feriado feriado) {
 

@@ -12,8 +12,11 @@ import br.edu.ifpb.sistemax.entidades.Evento;
  *
  * @author José
  */
-public class EventoRemove {
-    public boolean removerEvento(Evento evento){
-        return Factoy.criarFactoy(Factoy.DAO_BD).criaEventoDAO().remover(evento.getId());
+public class EventoRemoveBO {
+
+    public EventoRemoveBO() {
+    }
+    public boolean removerEvento(int id){
+        return Factoy.criarFactoy(Factoy.DAO_BD).criaEventoDAO().remover(id);
     }
 }
