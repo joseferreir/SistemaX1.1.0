@@ -5,10 +5,10 @@
  */
 package br.edu.ifpb.sistemax.Factoy;
 
+import br.edu.ifpb.sistemax.DAO.BlocoDAOIF;
 import br.edu.ifpb.sistemax.DAO.EventoDAOIF;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
-import br.edu.ifpb.sistemax.DAO.UsuarioAdminDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAOIF;
 import br.edu.ifpb.sistemax.DAO.sala.SalaDAOIF;
 
@@ -27,5 +27,7 @@ public interface FactoryDAOIF {
     public SalaDAOIF criaSalaDAO();
 
     public EventoDAOIF criaEventoDAO();
+
+    public BlocoDAOIF criaBlocoDAO();
 
 }
