@@ -6,6 +6,7 @@
 package br.edu.ifpb.sistemax.DAO;
 
 import br.edu.ifpb.sistemax.entidades.Bloco;
+import java.util.List;
 
 /**
  *
@@ -22,4 +23,6 @@ public interface BlocoDAOIF {
     public Bloco buscarPorId(int idBloco);
 
     public Bloco buscarPorNome(String nomeBloco);
+
+    public List<Bloco> buscarTodos();
 }

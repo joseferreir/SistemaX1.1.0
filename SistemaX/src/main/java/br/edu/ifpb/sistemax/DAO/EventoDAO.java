@@ -159,8 +159,9 @@ public class EventoDAO implements EventoDAOIF {
     }
 
     private Evento montarEvento(ResultSet rs) throws SQLException {
-        Evento e = new Evento();
-        e.setId(rs.getInt("id"));
+        int id = rs.getInt("id");
+        Evento e = new Evento(id);
+        
         e.setNome(rs.getString("nome"));
         e.setDescricao(rs.getString("descricao"));
         e.setDataInicio(rs.getTimestamp("dataInicio"));

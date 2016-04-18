@@ -82,14 +82,14 @@ public class Loader {
 //        System.out.println("Resultado:"+sala5.get(0).getNome());
         Timestamp i = Timestamp.from(Instant.now());
         Timestamp f = Timestamp.from(Instant.now());
-        Evento e = new Evento();
+        Evento e = new Evento(1);
         e.setDataInicio(i);
         e.setDataTermino(f);
         e.setDescricao("testo 2");
                 e.setNome("padroes 2");
                 e.setNumParticipantes(20);
                 e.setResponsavel("Administrador");
-                e.setId(1);
+                
                 e.emAndatento();
                 EventoDAO dao = new EventoDAO();
           boolean p = dao.Alterar(e);
@@ -99,11 +99,11 @@ public class Loader {
 //       // System.err.println("uuu "+u.getNome());
         Evento rr = dao.buscaPorId(1);
         System.err.println("eeee  "+rr.getEstado().getClass().getSimpleName());
-        Bloco b = new Bloco();
+        Bloco b = new Bloco(1);
         b.setNome("bloco 1");
-        b.setId(1);
-        Bloco r = Factoy.criarFactoy(Factoy.DAO_BD).criaBlocoDAO().buscarPorNome("bloco 1");
-        System.err.println("bloco "+r.getNome());
+        
+        List<Bloco> r = Factoy.criarFactoy(Factoy.DAO_BD).criaBlocoDAO().buscarTodos();
+        System.err.println("bloco "+r.get(0).getNome());
     }
 
 }

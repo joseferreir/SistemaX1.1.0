@@ -14,6 +14,7 @@ import java.sql.Timestamp;
  * @author José
  */
 public class Evento {
+    
 
     private int id;
     private String nome;
@@ -27,15 +28,17 @@ public class Evento {
     public Evento() {
         this.estado = new EventoPendente();
     }
+
+    public Evento(int id) {
+        this.id = id;
+    }
+    
     
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
