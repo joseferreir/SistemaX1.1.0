@@ -10,7 +10,7 @@ package br.edu.ifpb.sistemax.state;
  * @author José
  */
 public class SalaDisponivel implements SalaState{
-private String nome = "Disponivel" ;
+private String nome = "Disponivel";
     public SalaDisponivel() {
         
     }

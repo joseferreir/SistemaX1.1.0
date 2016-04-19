@@ -14,7 +14,6 @@ import java.sql.Timestamp;
  * @author José
  */
 public class Evento {
-    
 
     private int id;
     private String nome;
@@ -32,12 +31,10 @@ public class Evento {
     public void setId(int id) {
         this.id = id;
     }
-  
 
     public int getId() {
         return id;
     }
-
 
     public String getNome() {
         return nome;
@@ -71,8 +68,6 @@ public class Evento {
         this.responsavel = responsavel;
     }
 
-   
-
     public Timestamp getDataInicio() {
         return dataInicio;
     }
@@ -96,18 +91,17 @@ public class Evento {
     public void setEstado(EventoState estado) {
         this.estado = estado;
     }
-     public void pendente(){
-         this.estado.pendente();
-     }
 
-    public void emAndatento(){
-        this.estado.emAndatento();
+    public void pendente() {
+        this.estado = this.estado.pendente();
     }
 
-    public void agardando(){
-        this.estado.agardando();
+    public void emAndatento() {
+        this.estado = this.estado.emAndatento();
     }
 
-  
-    
+    public void agardando() {
+        this.estado = this.estado.agardando();
+    }
+
 }

@@ -80,14 +80,14 @@ public class Sala {
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
-     public SalaState disponivel(){
-       return new SalaDisponivel();
+     public void disponivel(){
+      this.estado =  estado.disponivel();
         
         
      }
 
-    public SalaState indisponivel(){
-       return new SalaIndisponivel();
+    public void indisponivel(){
+     this.estado = this.estado.indisponivel();
     }
 
     @Override

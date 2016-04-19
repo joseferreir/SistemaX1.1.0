@@ -64,9 +64,11 @@ public class Loader {
       //  System.err.println("trocou "+sala0.indisponivel().toString());
         sala0.indisponivel();
         sala0.setId(1);
-        System.out.println("ddddddd "+sala0.getEstado());
+        System.out.println("estado "+sala0.getEstado());
+        sala0.indisponivel();
+        System.err.println("estado 2 "+sala0.getEstado().toString());
         boolean sala1 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().atualizarSala(sala0);
-        System.out.println("Resultado: " + sala1);
+       System.out.println("Resultado: " + sala1);
 //atualizar sala teste;    
 //        Sala sala0 = new Sala("sala2", 1, 35, 1, 1);
 //        sala0.setId(1);
