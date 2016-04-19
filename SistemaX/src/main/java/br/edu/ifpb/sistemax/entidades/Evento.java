@@ -84,13 +84,15 @@ public class Evento {
         this.dataTermino = dataTermino;
     }
 
-    public String getEstado() {
-        return this.estado.getClass().getSimpleName();
+    public EventoState getEstado() {
+        return estado;
     }
 
     public void setEstado(EventoState estado) {
         this.estado = estado;
     }
+
+  
 
     public void pendente() {
         this.estado = this.estado.pendente();

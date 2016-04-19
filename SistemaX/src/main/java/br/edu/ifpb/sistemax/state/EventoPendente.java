@@ -10,7 +10,7 @@ package br.edu.ifpb.sistemax.state;
  * @author José
  */
 public class EventoPendente implements EventoState{
-
+private String nome = "Pendente";
     @Override
     public EventoState pendente() {
         return this;
@@ -24,6 +24,11 @@ public class EventoPendente implements EventoState{
     @Override
     public EventoState agardando() {
     return new EventoAgardando();
+    }
+
+    @Override
+    public String toString() {
+        return this.nome;
     }
     
 }

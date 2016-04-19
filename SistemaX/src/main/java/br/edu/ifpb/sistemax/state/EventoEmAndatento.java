@@ -12,6 +12,7 @@ import sun.security.util.PendingException;
  * @author José
  */
 class EventoEmAndatento implements EventoState {
+    private String nome = "emAndamento";
 
     public EventoEmAndatento() {
     }
@@ -28,8 +29,13 @@ class EventoEmAndatento implements EventoState {
 
     @Override
     public EventoState agardando() {
-        System.err.println("==================");
+        
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return this.nome;
     }
 
 }

@@ -102,7 +102,7 @@ public class Loader {
                 EventoDAO dao = new EventoDAO();
         Evento p;
         p = dao.buscaPorId(1);
-                  System.err.println("resultado "+p.getId());
+                  System.err.println("resultado "+p.getEstado());
 //                UsuarioAdmDAO s = new UsuarioAdmDAO();
 //        Usuario u = s.buscaPorId(1);
 //       // System.err.println("uuu "+u.getNome());

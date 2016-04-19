@@ -12,6 +12,11 @@ package br.edu.ifpb.sistemax.state;
 class EventoAgardando implements EventoState {
 
     @Override
+    public String toString() {
+        return  nome ;
+    }
+    private String nome = "Agardando";
+    @Override
     public EventoState pendente() {
         return new EventoPendente();
     }
@@ -23,7 +28,7 @@ class EventoAgardando implements EventoState {
 
     @Override
     public EventoState agardando() {
-        System.err.println("agggggg");
+       
         return this;
     }
 
