@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.sistemax.command.Usuario;
+package br.edu.ifpb.sistemax.command;
 
 import br.edu.ifpb.sistemax.command.Command;
 import br.edu.ifpb.sistemax.entidades.Usuario;

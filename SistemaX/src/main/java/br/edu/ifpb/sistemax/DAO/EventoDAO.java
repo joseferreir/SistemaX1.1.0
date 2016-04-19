@@ -159,9 +159,11 @@ public class EventoDAO implements EventoDAOIF {
     }
 
     private Evento montarEvento(ResultSet rs) throws SQLException {
-        int id = rs.getInt("id");
-        Evento e = new Evento(id);
+       
         
+        Evento e = new Evento();
+        e.setId(rs.getInt("id"));
+        System.err.println("di "+e.getId());
         e.setNome(rs.getString("nome"));
         e.setDescricao(rs.getString("descricao"));
         e.setDataInicio(rs.getTimestamp("dataInicio"));
@@ -172,16 +174,19 @@ public class EventoDAO implements EventoDAOIF {
         int op = rs.getInt("estado");
 
         switch (op) {
-            
-            case 2:
+            case 1:{
+                e.pendente();
+                break;
+            }
+            case 2:{
                 e.agardando();
                 System.err.println("eeeee" +op);
-                break;
-            case 3:
+                break;}
+            case 3:{
                 e.emAndatento();
                 break;
-            default:
-                e.pendente();
+            }
+            
 
         }
         return e;

@@ -9,8 +9,8 @@ import br.edu.ifpb.sistemax.DAO.FeriadoDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAOIF;
-import br.edu.ifpb.sistemax.DAO.sala.SalaDAO;
-import br.edu.ifpb.sistemax.DAO.sala.SalaDAOIF;
+import br.edu.ifpb.sistemax.DAO.SalaDAO;
+import br.edu.ifpb.sistemax.DAO.SalaDAOIF;
 
 public class FactoryBD implements FactoryDAOIF {
 

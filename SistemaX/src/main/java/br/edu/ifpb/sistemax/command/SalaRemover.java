@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifpb.sistemax.command.Usuario;
+package br.edu.ifpb.sistemax.command;
 import br.edu.ifpb.sistemax.command.Command;
 import br.edu.ifpb.sistemax.model.RemoverUsuarioBO;
 import java.io.IOException;
@@ -16,23 +16,24 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author José
+ * @author Aluísio
  */
-public class UsuarioRemover implements Command {
+public class SalaRemover implements Command {
 
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) {
 
         try {
+            
             RemoverUsuarioBO remover = new RemoverUsuarioBO();
             boolean result = remover.remover(Integer.parseInt(request.getParameter("id")));
             request.setAttribute("removeu", result);
             RequestDispatcher des = request.getServletContext().getRequestDispatcher("/Administrador.jsp");
             des.forward(request, response);
         } catch (ServletException ex) {
-            Logger.getLogger(UsuarioRemover.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SalaRemover.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(UsuarioRemover.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SalaRemover.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

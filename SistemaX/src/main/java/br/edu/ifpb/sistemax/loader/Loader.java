@@ -8,7 +8,7 @@ package br.edu.ifpb.sistemax.loader;
 import br.edu.ifpb.sistemax.DAO.EventoDAO;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
-import br.edu.ifpb.sistemax.DAO.sala.SalaDAO;
+import br.edu.ifpb.sistemax.DAO.SalaDAO;
 import br.edu.ifpb.sistemax.Factoy.Factoy;
 import br.edu.ifpb.sistemax.entidades.Bloco;
 import br.edu.ifpb.sistemax.entidades.Evento;
@@ -82,7 +82,7 @@ public class Loader {
 //        System.out.println("Resultado:"+sala5.get(0).getNome());
         Timestamp i = Timestamp.from(Instant.now());
         Timestamp f = Timestamp.from(Instant.now());
-        Evento e = new Evento(1);
+        Evento e = new Evento();
         e.setDataInicio(i);
         e.setDataTermino(f);
         e.setDescricao("testo 2");
@@ -92,18 +92,19 @@ public class Loader {
                 
                 e.emAndatento();
                 EventoDAO dao = new EventoDAO();
-          boolean p = dao.Alterar(e);
-                  System.err.println("resultado "+p);
+        Evento p;
+        p = dao.buscaPorId(1);
+                  System.err.println("resultado "+p.getId());
 //                UsuarioAdmDAO s = new UsuarioAdmDAO();
 //        Usuario u = s.buscaPorId(1);
 //       // System.err.println("uuu "+u.getNome());
-        Evento rr = dao.buscaPorId(1);
-        System.err.println("eeee  "+rr.getEstado().getClass().getSimpleName());
-        Bloco b = new Bloco(1);
-        b.setNome("bloco 1");
-        
-        List<Bloco> r = Factoy.criarFactoy(Factoy.DAO_BD).criaBlocoDAO().buscarTodos();
-        System.err.println("bloco "+r.get(0).getNome());
-    }
+     //   Evento rr = dao.buscaPorId(1);
+//        System.err.println("eeee  "+rr.getEstado().getClass().getSimpleName());
+//        Bloco b = new Bloco(1);
+//        b.setNome("bloco 1");
+//        
+//        List<Bloco> r = Factoy.criarFactoy(Factoy.DAO_BD).criaBlocoDAO().buscarTodos();
+//        System.err.println("bloco "+r.get(0).getNome());
+   }
 
 }

@@ -10,7 +10,7 @@ import br.edu.ifpb.sistemax.DAO.EventoDAOIF;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAOIF;
-import br.edu.ifpb.sistemax.DAO.sala.SalaDAOIF;
+import br.edu.ifpb.sistemax.DAO.SalaDAOIF;
 
 /**
  *
