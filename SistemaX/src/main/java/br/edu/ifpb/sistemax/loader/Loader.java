@@ -20,7 +20,7 @@ import br.edu.ifpb.sistemax.exeption.EmailExistenteException;
 import br.edu.ifpb.sistemax.exeption.FeriadoException;
 import br.edu.ifpb.sistemax.exeption.NomeUsuarioExistenteException;
 import br.edu.ifpb.sistemax.model.FeriadoBuscar;
-import br.edu.ifpb.sistemax.model.CadastrarFeriadoBo;
+import br.edu.ifpb.sistemax.model.FeriadoCadastrarBO;
 import br.edu.ifpb.sistemax.model.UsuarioCadastrarBO;
 import static java.awt.PageAttributes.MediaType.C;
 import java.io.FileNotFoundException;

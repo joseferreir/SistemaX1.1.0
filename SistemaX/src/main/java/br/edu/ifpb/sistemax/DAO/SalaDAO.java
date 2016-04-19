@@ -184,6 +184,25 @@ public class SalaDAO implements SalaDAOIF {
             return null;
         }
     }
+    public List<Sala> buscarTodas(){
+       List< Sala> resultado = new ArrayList<>();
+
+        try {
+            conexao = new Conexao();
+            String consulta = "SELECT * FROM sala";
+            PreparedStatement ps = conexao.getConnection().prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                resultado.add( montarSala(rs));
+            }
+        } catch (SQLException | IOException | ClassNotFoundException ex) {
+            Logger.getLogger(SalaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return resultado;
+    }
     
     private Sala montarSala(ResultSet rs) throws SQLException {
         Sala sala = new Sala();

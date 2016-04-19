@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  * Aluisio
  *
  **/
-public class CadastrarFeriadoBo {
+public class FeriadoCadastrarBO {
 
     private FeriadoDAO dao;
     private FeriadoBuscar busca;
@@ -89,7 +89,7 @@ public class CadastrarFeriadoBo {
         String extensao = pathArquivoFeriados.substring(taman - 3);
         if (extensao.equalsIgnoreCase("csv")) {
 
-            return CadastrarFeriadoBo.this.adicionarFeriados(new FileInputStream(pathArquivoFeriados), sobrescrever);
+            return FeriadoCadastrarBO.this.adicionarFeriados(new FileInputStream(pathArquivoFeriados), sobrescrever);
         }else
             throw new FeriadoException();
             

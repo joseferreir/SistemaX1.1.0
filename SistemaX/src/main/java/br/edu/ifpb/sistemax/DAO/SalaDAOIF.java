@@ -14,9 +14,16 @@ import java.util.Map;
  * @author Aluísio
  */
 public interface SalaDAOIF {
+
     public boolean addSala(Sala sala);
-    public boolean atualizarSala (Sala sala);
+
+    public boolean atualizarSala(Sala sala);
+
     public boolean removerSala(int id);
-    public Sala buscarSala (int id);
+
+    public Sala buscarSala(int id);
+
     public List<Sala> buscarAtributosNaoExatos(Map<String, String> map);
+
+    public List<Sala> buscarTodas();
 }
