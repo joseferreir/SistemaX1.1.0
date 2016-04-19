@@ -1,6 +1,10 @@
 
 package br.edu.ifpb.sistemax.entidades;
 
+import br.edu.ifpb.sistemax.state.Disponivel;
+import br.edu.ifpb.sistemax.state.SalaState;
+import br.edu.ifpb.sistemax.state.Indisponivel;
+
 /**
  *
  * @author Aluísio
@@ -10,19 +14,14 @@ public class Sala {
     private String nome;
     private int idBloco;
     private int capacidade;
-    private int estado;
+    private SalaState estado;
     private int tipo;
 
     public Sala(){
+        
     }
 
-    public Sala(String nome, int idBloco, int capacidade, int estado, int tipo) {
-        this.nome = nome;
-        this.idBloco = idBloco;
-        this.capacidade = capacidade;
-        this.estado = estado;
-        this.tipo = tipo;
-    }
+   
     
 
     public int getId() {
@@ -57,13 +56,11 @@ public class Sala {
         this.capacidade = capacidade;
     }
 
-    public int getEstado() {
-        return estado;
+    public String getEstado() {
+        return estado.getClass().getSimpleName();
     }
 
-    public void setEstado(int estado) {
-        this.estado = estado;
-    }
+  
 
     public int getTipo() {
         return tipo;
@@ -72,7 +69,15 @@ public class Sala {
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
-    
+     public SalaState disponivel(){
+       return new Disponivel();
+        
+        
+     }
+
+    public SalaState indisponivel(){
+       return new Indisponivel();
+    }
 
     @Override
     public String toString() {

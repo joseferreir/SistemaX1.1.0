@@ -9,9 +9,19 @@ package br.edu.ifpb.sistemax.state;
  *
  * @author José
  */
-public interface SalaState {
+public class Disponivel implements SalaState{
 
-    public SalaState disponivel();
+    public Disponivel() {
+    }
 
-    public SalaState indisponivel();
+    @Override
+    public SalaState disponivel() {
+   return this;
+    }
+
+    @Override
+    public SalaState indisponivel() {
+        return new Indisponivel();
+    }
+    
 }
