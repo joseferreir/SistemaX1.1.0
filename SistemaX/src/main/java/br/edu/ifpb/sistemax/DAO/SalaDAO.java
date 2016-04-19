@@ -47,7 +47,7 @@ public class SalaDAO implements SalaDAOIF {
             pst.setString(1, sala.getNome());
             pst.setInt(2, sala.getIdBloco());
             pst.setInt(3, sala.getCapacidade());
-            pst.setInt(4, EstadoSala.valueOf(sala.getEstado()).id);
+            pst.setInt(4, EstadoSala.valueOf(sala.getEstado().toString()).id);
             pst.setInt(5, sala.getTipo());
             if (pst.executeUpdate() > 0) {
                 resultado = true;
@@ -77,7 +77,7 @@ public class SalaDAO implements SalaDAOIF {
             pst.setString(1, sala.getNome());
             pst.setInt(2, sala.getIdBloco());
             pst.setInt(3, sala.getCapacidade());
-            pst.setInt(4,  EstadoSala.valueOf(sala.getEstado()).id);
+            pst.setInt(4,  EstadoSala.valueOf(sala.getEstado().toString()).id);
             pst.setInt(5, sala.getTipo());
             pst.setInt(6, sala.getId());
             if (pst.executeUpdate() > 0) {
@@ -191,7 +191,7 @@ public class SalaDAO implements SalaDAOIF {
         sala.setNome(rs.getString("nome"));
         sala.setIdBloco(rs.getInt("idBloco"));
         sala.setCapacidade(rs.getInt("capacidade"));
-      if(EstadoSala.DISPONIVEL.id==rs.getInt("estado"))
+      if(EstadoSala.Disponivel.id==rs.getInt("estado"))
           sala.disponivel();
       else
           sala.indisponivel();

@@ -9,19 +9,30 @@ package br.edu.ifpb.sistemax.state;
  *
  * @author José
  */
-public class Disponivel implements SalaState{
-
-    public Disponivel() {
+public class SalaDisponivel implements SalaState{
+private String nome = "Disponivel" ;
+    public SalaDisponivel() {
+        
     }
 
     @Override
     public SalaState disponivel() {
    return this;
     }
+    
 
     @Override
     public SalaState indisponivel() {
-        return new Indisponivel();
+        return new SalaIndisponivel();
     }
+
+    @Override
+    public String toString() {
+        return  nome ;
+    }
+
+   
+     
+    
     
 }

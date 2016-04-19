@@ -6,7 +6,7 @@ package br.edu.ifpb.sistemax.enuns;
  */
 public enum EstadoSala {
      
-    DISPONIVEL(1), INDISPONIVEL(2);
+    Disponivel(1), Indisponivel(2);
 
     public int id;
     

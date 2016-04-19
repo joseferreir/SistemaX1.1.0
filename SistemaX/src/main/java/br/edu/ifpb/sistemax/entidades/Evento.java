@@ -89,8 +89,8 @@ public class Evento {
         this.dataTermino = dataTermino;
     }
 
-    public EventoState getEstado() {
-        return estado;
+    public String getEstado() {
+        return this.estado.getClass().getSimpleName();
     }
 
     public void setEstado(EventoState estado) {

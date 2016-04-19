@@ -58,9 +58,15 @@ public class Loader {
 //         
 
 //##adicionar sala teste;
-//        Sala sala0 = new Sala("sala1", 1, 40, 1, 1);
-//        boolean sala1 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().addSala(sala0);
-//        System.out.println("Resultado: " + sala1);
+        Sala sala0 = new Sala("sala 2", 1, 30, 1);
+       // sala0.disponivel();
+      //  System.err.println("ssss "+ sala0.getEstado());
+      //  System.err.println("trocou "+sala0.indisponivel().toString());
+        sala0.indisponivel();
+        sala0.setId(1);
+        System.out.println("ddddddd "+sala0.getEstado());
+        boolean sala1 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().atualizarSala(sala0);
+        System.out.println("Resultado: " + sala1);
 //atualizar sala teste;    
 //        Sala sala0 = new Sala("sala2", 1, 35, 1, 1);
 //        sala0.setId(1);
