@@ -100,6 +100,8 @@ public class Loader {
                 
                 e.emAndatento();
                 EventoDAO dao = new EventoDAO();
+        boolean ddd = dao.add(e);
+        System.err.println("dddd "+ddd);
         Evento p;
         p = dao.buscaPorId(1);
                   System.err.println("resultado "+p.getEstado());

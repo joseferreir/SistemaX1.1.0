@@ -41,8 +41,8 @@ public class EventoDAO implements EventoDAOIF {
      */
     @Override
     public boolean add(Evento evento) {
-        sql = "INSERT INTO Evento (nome , descricao,  numeroParticipantes,  idResponsavel , dataInicio,  dataTermino)"
-                + "VALUES(?, ?, ?, ? ,? ,?) ";
+        sql = "INSERT INTO Evento (nome , descricao,  numeroParticipantes,  idResponsavel , dataInicio,  dataTermino, estado)"
+                + "VALUES(?, ?, ?, ? ,? ,?, ?) ";
         return persinteNoBD(evento, sql, addEvento);
 
     }
