@@ -6,7 +6,10 @@
 package br.edu.ifpb.sistemax.command;
 
 import br.edu.ifpb.sistemax.entidades.Evento;
+import br.edu.ifpb.sistemax.entidades.Usuario;
+import br.edu.ifpb.sistemax.enuns.PapelUser;
 import br.edu.ifpb.sistemax.model.EventoCadastrarBO;
+import com.google.gson.Gson;
 import java.sql.Timestamp;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -22,16 +25,20 @@ public class EventoCadastrar implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) {
         response.setContentType("text/html;charset=UTF-8");
         try {
-
+            Usuario usuario = (Usuario) request.getSession().getAttribute("user");
+            if (usuario.getPapel() == PapelUser.Aluno) {
+                response.sendRedirect("pagina");
+            }
             EventoCadastrarBO cadastrar = new EventoCadastrarBO();
             Evento evento = montarEvento(request);
             Map<String, String> result = cadastrar.cadastrarEvento(evento);
             if (result.get("passou").equals("true")) {
                 request.getSession().setAttribute("evento", evento);
-                response.getWriter().print("true");
+                result.put("resultado", "Evento cadastrado com sucesso!");
             }
-             request.setAttribute("erros", result);
-            response.getWriter().print("false");
+            String json = new Gson().toJson(result);
+            response.setContentType("application/json");
+            response.setCharacterEncoding("UTF-8");
 
         } catch (Exception e) {
         }

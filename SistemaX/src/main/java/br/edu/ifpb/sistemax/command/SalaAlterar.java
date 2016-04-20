@@ -6,7 +6,10 @@
 package br.edu.ifpb.sistemax.command;
 
 import br.edu.ifpb.sistemax.entidades.Sala;
+import br.edu.ifpb.sistemax.entidades.Usuario;
+import br.edu.ifpb.sistemax.enuns.PapelUser;
 import br.edu.ifpb.sistemax.model.SalaAlterarBO;
+import com.google.gson.Gson;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,16 +25,23 @@ public class SalaAlterar implements Command {
         response.setContentType("text/html;charset=UTF-8");
         try {
              request.setCharacterEncoding("UTF-8");
+               Usuario usuario = (Usuario) request.getSession().getAttribute("user");
+            if (usuario.getPapel() != PapelUser.Administrador ||usuario.getPapel()!=PapelUser.AssistenteDeSala) {
+                response.sendRedirect("pagina");
+            }
             SalaAlterarBO alterar = new SalaAlterarBO();
             Sala Sala = (Sala) request.getSession().getAttribute("sala");
             Sala = atualizarSala(request, Sala);
             Map<String, String> result = alterar.alterar(Sala);
             if (result.get("passou").equals("true")) {
+                result.put("resultado", "Atualização bem sucedida!");
                 request.getSession().setAttribute("sala", Sala);
-                response.getWriter().print("true");
+               
             }
-            request.setAttribute("errosSala", result);
-            response.getWriter().print("false");
+             String json = new Gson().toJson(result);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+            
 
         } catch (Exception e) {
         }
