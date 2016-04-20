@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package br.edu.ifpb.sistemax.command;
-import br.edu.ifpb.sistemax.command.Command;
 import br.edu.ifpb.sistemax.model.RemoverUsuarioBO;
 import java.io.IOException;
 import java.util.logging.Level;

@@ -21,7 +21,7 @@ public class SalaAlterarBO {
          SalaValidar validar = new SalaValidar();
         Map<String, String> erros = validar.validarSala(sala);
         SalaDAOIF dao = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO();
-        if (!erros.get("passou").equalsIgnoreCase("true") && dao.addSala(sala)) {
+        if (!erros.get("passou").equalsIgnoreCase("true") && dao.atualizarSala(sala)) {
             erros.put("passou", "false");
         }
         return erros;
