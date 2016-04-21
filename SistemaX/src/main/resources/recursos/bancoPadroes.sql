@@ -40,7 +40,7 @@ CREATE TABLE Sala(
 
 
 CREATE TABLE Material (
-    descricao VARCHAR(100) NOT NULL, 
+    descricao VARCHAR(60) NOT NULL, 
     tombamento INT NOT NULL, 
     estado INT NOT NULL DEFAULT 1, 
     local INT DEFAULT NULL, 
