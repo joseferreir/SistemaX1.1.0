@@ -9,7 +9,6 @@ import br.edu.ifpb.sistemax.Factoy.Factoy;
 import br.edu.ifpb.sistemax.conexao.*;
 import br.edu.ifpb.sistemax.entidades.Evento;
 import br.edu.ifpb.sistemax.entidades.Usuario;
-import br.edu.ifpb.sistemax.enuns.EstadoEvento;
 import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

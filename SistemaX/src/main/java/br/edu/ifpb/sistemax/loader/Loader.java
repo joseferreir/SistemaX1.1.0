@@ -13,6 +13,7 @@ import br.edu.ifpb.sistemax.Factoy.Factoy;
 import br.edu.ifpb.sistemax.entidades.Bloco;
 import br.edu.ifpb.sistemax.entidades.Evento;
 import br.edu.ifpb.sistemax.entidades.Feriado;
+import br.edu.ifpb.sistemax.entidades.Material;
 import br.edu.ifpb.sistemax.entidades.Sala;
 import br.edu.ifpb.sistemax.entidades.Usuario;
 import br.edu.ifpb.sistemax.enuns.PapelUser;
@@ -67,8 +68,8 @@ public class Loader {
         System.out.println("estado "+sala0.getEstado());
         sala0.indisponivel();
         System.err.println("estado 2 "+sala0.getEstado().toString());
-        boolean sala1 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().atualizarSala(sala0);
-       System.out.println("Resultado: " + sala1);
+       // boolean sala1 = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().atualizarSala(sala0);
+      // System.out.println("Resultado: " + sala1);
 //atualizar sala teste;    
 //        Sala sala0 = new Sala("sala2", 1, 35, 1, 1);
 //        sala0.setId(1);
@@ -101,10 +102,10 @@ public class Loader {
                 e.emAndatento();
                 EventoDAO dao = new EventoDAO();
         boolean ddd = dao.add(e);
-        System.err.println("dddd "+ddd);
+       // System.err.println("dddd "+ddd);
         Evento p;
-        p = dao.buscaPorId(1);
-                  System.err.println("resultado "+p.getEstado());
+       // p = dao.buscaPorId(1);
+                //  System.err.println("resultado "+p.getEstado());
 //                UsuarioAdmDAO s = new UsuarioAdmDAO();
 //        Usuario u = s.buscaPorId(1);
 //       // System.err.println("uuu "+u.getNome());
@@ -115,6 +116,18 @@ public class Loader {
 //        
 //        List<Bloco> r = Factoy.criarFactoy(Factoy.DAO_BD).criaBlocoDAO().buscarTodos();
 //        System.err.println("bloco "+r.get(0).getNome());
+        sala0.setId(1);
+        Material m =new Material();
+        m.setDescricao("cabo");
+        m.setTombamento(1000004);
+        m.setLocal(sala0);
+      Map  map = new HashMap();
+      map.put("descricao", "ap");
+        Material l = Factoy.criarFactoy(Factoy.DAO_BD).criaMaterialDAO().busvarPorTombamento(m.getTombamento());
+      //  for (int j = 0; j < l.size(); j++) 
+            
+        
+        System.err.println("resultado mat "+l.getEstado());
    }
 
 }

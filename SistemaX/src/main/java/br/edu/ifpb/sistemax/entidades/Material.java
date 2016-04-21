@@ -6,6 +6,7 @@
 package br.edu.ifpb.sistemax.entidades;
 
 import br.edu.ifpb.sistemax.state.MateralState;
+import br.edu.ifpb.sistemax.state.MaterialDisponivel;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Material {
     private long tombamento;
 
     public Material() {
-        this.estado = this.estado.disponivel();
+        this.estado = new MaterialDisponivel();
         this.local = null;
     }
 

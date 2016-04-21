@@ -6,6 +6,8 @@ import br.edu.ifpb.sistemax.DAO.EventoDAO;
 import br.edu.ifpb.sistemax.DAO.EventoDAOIF;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAO;
 import br.edu.ifpb.sistemax.DAO.FeriadoDAOIF;
+import br.edu.ifpb.sistemax.DAO.MaterialDAO;
+import br.edu.ifpb.sistemax.DAO.MaterialDAOIF;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioDAOIF;
@@ -46,6 +48,11 @@ public class FactoryBD implements FactoryDAOIF {
     @Override
     public BlocoDAOIF criaBlocoDAO() {
         return new BlocoDAO();
+    }
+
+    @Override
+    public MaterialDAOIF criaMaterialDAO() {
+        return new MaterialDAO();
     }
 
 }

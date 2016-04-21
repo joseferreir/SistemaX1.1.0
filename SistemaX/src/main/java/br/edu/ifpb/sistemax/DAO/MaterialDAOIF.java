@@ -6,6 +6,8 @@
 package br.edu.ifpb.sistemax.DAO;
 
 import br.edu.ifpb.sistemax.entidades.Material;
+import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -21,8 +23,9 @@ public interface MaterialDAOIF {
 
     public Material busvarPorTombamento(long tombamento);
 
-    public Material busvarTodos();
+    public List<Material> busvarTodos();
 
     public Material busvarPorDescricao(String descricao);
+    
 
 }

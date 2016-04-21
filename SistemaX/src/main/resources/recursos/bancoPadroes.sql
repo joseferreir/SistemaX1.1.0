@@ -60,12 +60,18 @@ CREATE TABLE Evento (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE alocacao (
-        idsala INT NOT NULL,
-        idevento INT not null,
-        idMaterial INT UNIQUE, 
-        FOREIGN KEY (idMaterial) REFERENCES   Material(tombamento) ON DELETE CASCADE,
+CREATE TABLE Alocacao (
+       id SERIAL,
+       idsala INT NOT NULL,
+       idevento INT not null,
         FOREIGN KEY (idsala) REFERENCES Sala(id) ON DELETE CASCADE,
         FOREIGN KEY (idevento) REFERENCES Evento(id) ON DELETE CASCADE,
-        PRIMARY KEY (idsala,idevento)
+        PRIMARY KEY (id)
 );
+CREATE TABLE AlocacaoMaterial(
+       alocacao INT,
+       idMaterial INT NOT NULL,
+       FOREIGN KEY (idMaterial) REFERENCES  Material(tombamento) ON DELETE CASCADE,
+       FOREIGN KEY (alocacao) REFERENCES   Alocacao(id) ON DELETE SET NULL
+
+)
