@@ -7,7 +7,7 @@ package br.edu.ifpb.sistemax.enuns;
  */
 public enum EstadoMaterial {
     
-    DISPONIVEL(1), INDISPONIVEL(2);
+   MaterialDisponivel(1), MaterialEmprestado(2);
 
     public int id;
     

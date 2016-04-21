@@ -10,5 +10,7 @@ package br.edu.ifpb.sistemax.state;
  * @author José
  */
 public interface MateralState {
-    
+    public MateralState emprestado();
+
+    public MateralState disponivel();
 }
