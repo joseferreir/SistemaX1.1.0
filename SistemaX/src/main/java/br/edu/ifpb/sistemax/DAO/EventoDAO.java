@@ -66,7 +66,7 @@ public class EventoDAO implements EventoDAOIF {
     
     @Override
     public boolean Alterar(Evento evento) {
-        sql = "UPDATE Evento SET nome=?, descricao=?,  numeroParticipantes=?,  idResponsavel=? , dataInicio=?,  dataTermino=?,estado=? WHERE id=?";
+        sql = "UPDATE Evento SET nome=?, descricao=?,  numeroParticipantes=?,  idResponsavel=? , dataInicio=?,  dataTermino=?,estado=?,local=? WHERE id=?";
         return persinteNoBD(evento, sql, setEvento);
     }
     
@@ -133,7 +133,8 @@ public class EventoDAO implements EventoDAOIF {
             pst.setTimestamp(6, evento.getDataTermino());
             pst.setInt(7, EstadoEvento.valueOf(evento.getEstado().getClass().getSimpleName()).id);
             if (operacao == setEvento) {
-                pst.setInt(8, evento.getId());
+                pst.setInt(8, evento.getSala().getId());
+                pst.setInt(9, evento.getId());
             }
             if (pst.executeUpdate() > 0) {
                 result = true;
@@ -185,6 +186,8 @@ public class EventoDAO implements EventoDAOIF {
         e.setDataInicio(rs.getTimestamp("dataInicio"));
         e.setDataTermino(rs.getTimestamp("dataTermino"));
         Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorId(rs.getInt("idResponsavel"));
+        Sala sala = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarSala(rs.getInt("local"));
+        e.setSala(sala);
         e.setResponsavel(responsavel.getNome());
         e.setNumParticipantes(rs.getInt("numeroParticipantes"));
         int op = rs.getInt("estado");
@@ -210,45 +213,49 @@ public class EventoDAO implements EventoDAOIF {
     }
 // metodo com erro
     public List<EventoDTO> listarNaoFinalizados() throws DataBaseException {
+         List<EventoDTO> eventos = new ArrayList<>();
         
         try {
             
             String agora = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm"));
             System.out.println(agora + " ");
 //            String sql = "SELECT e.id, e.dataInicio, e.dataTermino, e.nome as nomeEvento, s.nome as nomeSala FROM Evento e, Sala s,alocacao al WHERE data_termino > '" + agora + "' AND al.idsala = s.id";
-            String sql = "SELECT e.id, e.dataInicio, e.dataTermino, e.nome as nomeEvento, al.idsala as idSala FROM Evento e, alocacao al WHERE dataTermino > '" + agora + "' AND al.idsala=alocacao.idsala";
-            
-            PreparedStatement pst = conn.getConnection().prepareStatement(sql);
+           // String sql = "SELECT e.id, e.dataInicio, e.dataTermino, e.nome as nomeEvento, alocacao.idsala as idSala FROM Evento e, alocacao  WHERE dataTermino > '" + agora + "' AND idsala=alocacao.idsala";
+             String sql = "SELECT e.id, e.dataInicio, e.dataTermino, e.nome as nomeEvento, e.local as idSala FROM Evento e WHERE dataTermino > '" + agora + "'";
+             pst = conn.getConnection().prepareStatement(sql);
             
             ResultSet rs = pst.executeQuery();
-            List<EventoDTO> eventos = new ArrayList<>();
+           
             
             while (rs.next()) {
-                EventoDTO e = preencherEventoDTO(rs);
+                EventoDTO e = montarEventoDTO(rs);
                 eventos.add(e);
             }
             
-            return eventos;
+         
         } catch (SQLException ex) {
             ex.printStackTrace();
-            return null;
+         //   return null;
         } finally {
             conn.closeAll(pst);
         }
+         return eventos;
+          
     }
     // metodo com erro
     public List<EventoDTO> listarEventosDTO() throws DataBaseException {
         List<EventoDTO> eventos = new ArrayList<>();
         try {
             
-            String sql = "SELECT e.id, e.dataInicio, e.dataTermino, e.nome as nomeEvento, a.idsala as local FROM Evento e, Alocacao  a WHERE a.idsala= alocacao.idsala";
+           String sql = "SELECT e.id, e.dataInicio, e.dataTermino, e.nome as nomeEvento, e.local as idSala FROM Evento e";
+
             
              pst = conn.getConnection().prepareStatement(sql);
             
             ResultSet rs = pst.executeQuery();
            
             while (rs.next()) {
-                EventoDTO e = preencherEventoDTO(rs);
+                EventoDTO e = montarEventoDTO(rs);
                 eventos.add(e);
             }
             
@@ -262,7 +269,7 @@ public class EventoDAO implements EventoDAOIF {
             return eventos;
     }
     
-    private EventoDTO preencherEventoDTO(ResultSet rs) throws SQLException, SQLException {
+    private EventoDTO montarEventoDTO(ResultSet rs) throws SQLException, SQLException {
         EventoDTO eData = null;
         
         try {
@@ -272,7 +279,7 @@ public class EventoDAO implements EventoDAOIF {
             eData.setId(rs.getInt("id"));
             eData.setNome(rs.getString("nomeEvento"));
             
-            int idSala = rs.getInt("local");
+            int idSala = rs.getInt("idsala");
             
             if (idSala == 0) {
                 eData.setLocal("--");

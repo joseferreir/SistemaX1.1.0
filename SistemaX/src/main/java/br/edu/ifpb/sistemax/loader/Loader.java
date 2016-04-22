@@ -101,10 +101,12 @@ public class Loader {
                 e.setNome("padroes 2");
                 e.setNumParticipantes(20);
                 e.setResponsavel("Administrador");
-                
+                sala0.setId(1);
+                e.setSala(sala0);
                 e.emAndatento();
+                e.setId(2);
                 EventoDAO dao = new EventoDAO();
-        boolean ddd = dao.add(e);
+       boolean ddd = dao.Alterar(e);
         System.err.println("dddd "+ddd);
         Evento p;
        // p = dao.buscaPorId(1);
@@ -130,9 +132,9 @@ public class Loader {
         // List l = Factoy.criarFactoy(Factoy.DAO_BD).criaMaterialDAO().buscarAtributos(map);
         // for (int j = 0; j < l.size(); j++)
         // System.err.println("resultado mat "+l.get(j).toString());
-      //  List<EventoDTO> l = dao.listarNaoFinalizados();
-      //  for (int j = 0; j < l.size(); j++)
-         //   System.err.println("resultado mat "+l.get(j).getSituacao());
+     //   List<EventoDTO> l = dao.listarNaoFinalizados();
+      // for (int j = 0; j < l.size(); j++)
+         //   System.err.println("resultado mat "+l.get(j).getNome());
         
         
    }

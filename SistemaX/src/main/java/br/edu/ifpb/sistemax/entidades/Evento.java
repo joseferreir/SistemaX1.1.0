@@ -23,6 +23,7 @@ public class Evento {
     private Timestamp dataInicio;
     private Timestamp dataTermino;
     private EventoState estado;
+  private Sala sala;
 
     public Evento() {
         this.estado = new EventoPendente();
@@ -105,5 +106,14 @@ public class Evento {
     public void agardando() {
         this.estado = this.estado.agardando();
     }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+    
 
 }

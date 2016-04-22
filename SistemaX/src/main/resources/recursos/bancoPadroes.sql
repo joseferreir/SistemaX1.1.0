@@ -57,7 +57,9 @@ CREATE TABLE Evento (
     dataInicio TIMESTAMP NOT NULL,
     dataTermino TIMESTAMP NOT NULL,
     estado INT NOT NULL DEFAULT 1,
-    PRIMARY KEY (id)
+    local INT ,
+ FOREIGN KEY (local) REFERENCES Sala(id) ON DELETE CASCADE,
+PRIMARY KEY (id)
 );
 
 CREATE TABLE Alocacao (
