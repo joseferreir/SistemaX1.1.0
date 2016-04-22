@@ -247,7 +247,7 @@ public class EventoDAO implements EventoDAOIF {
         List<EventoDTO> eventos = new ArrayList<>();
         try {
             
-           String sql = "SELECT e.id, e.dataInicio, e.dataTermino, e.nome as nomeEvento, e.local as idSala FROM Evento e";
+           String sql = "SELECT e.id, e.dataInicio, e.dataTermino, e.nome as nomeEvento, e.local as idSala,bloco.nome as bloco FROM Evento e,Bloco WHERE Bloco.id=e.local";
 
             
              pst = conn.getConnection().prepareStatement(sql);
@@ -278,6 +278,7 @@ public class EventoDAO implements EventoDAOIF {
             
             eData.setId(rs.getInt("id"));
             eData.setNome(rs.getString("nomeEvento"));
+            String eBloco = rs.getString("bloco");
             
             int idSala = rs.getInt("idsala");
             
@@ -286,12 +287,12 @@ public class EventoDAO implements EventoDAOIF {
             } else {
                 
                 Sala s = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarSala(idSala);
-                eData.setLocal(s.getNome());
+                eData.setLocal(s.getNome()+" - "+eBloco);
             }
             
             Timestamp dataInicio = rs.getTimestamp("dataInicio");
             Timestamp dataFim = rs.getTimestamp("dataTermino");
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm");
             eData.setData(sdf.format(dataInicio));
             
             Duration diff2 = Duration.between(dataInicio.toLocalDateTime(), dataFim.toLocalDateTime());
@@ -326,7 +327,9 @@ public class EventoDAO implements EventoDAOIF {
                         situacao = "Concluído";
                     }
                 }
+                
             }
+            eData.setSituacao(situacao);
         } catch (Exception ex) {
             Logger.getLogger(UsuarioAdmDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

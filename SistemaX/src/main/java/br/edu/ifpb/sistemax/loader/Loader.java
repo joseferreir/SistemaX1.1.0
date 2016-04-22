@@ -106,8 +106,8 @@ public class Loader {
                 e.emAndatento();
                 e.setId(2);
                 EventoDAO dao = new EventoDAO();
-       boolean ddd = dao.Alterar(e);
-        System.err.println("dddd "+ddd);
+     //  boolean ddd = dao.Alterar(e);
+      //  System.err.println("dddd "+ddd);
         Evento p;
        // p = dao.buscaPorId(1);
                 //  System.err.println("resultado "+p.getEstado());
@@ -126,16 +126,18 @@ public class Loader {
         m.setDescricao("cabo");
         m.setTombamento(1000004);
         m.setLocal(sala0);
-      Map  map = new HashMap();
-      map.put("estado", Integer.toString(1));
-        map.put("local", Integer.toString(1));
+  //    Map  map = new HashMap();
+    //  map.put("estado", Integer.toString(1));
+      //  map.put("local", Integer.toString(1));
         // List l = Factoy.criarFactoy(Factoy.DAO_BD).criaMaterialDAO().buscarAtributos(map);
         // for (int j = 0; j < l.size(); j++)
         // System.err.println("resultado mat "+l.get(j).toString());
-     //   List<EventoDTO> l = dao.listarNaoFinalizados();
-      // for (int j = 0; j < l.size(); j++)
-         //   System.err.println("resultado mat "+l.get(j).getNome());
-        
+        List<EventoDTO> l = dao.listarEventosDTO();
+        EventoDTO w = null;
+       for (int j = 0; j < l.size(); j++){
+           w= l.get(j);
+       System.err.println("resultado mat "+w.getData()+" local "+w.getLocal());
+       }
         
    }
 
