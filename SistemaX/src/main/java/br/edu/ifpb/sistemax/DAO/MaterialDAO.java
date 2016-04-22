@@ -13,13 +13,17 @@ import br.edu.ifpb.sistemax.entidades.Material;
 import br.edu.ifpb.sistemax.entidades.Sala;
 import br.edu.ifpb.sistemax.enuns.EstadoMaterial;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.eclipse.persistence.internal.core.helper.CoreClassConstants;
@@ -165,7 +169,51 @@ public class MaterialDAO implements MaterialDAOIF {
         }
         return Collections.EMPTY_LIST;
     }
+    @Override
+ public List<Material> buscarAtributos(Map<String, String> map) {
+     List<Material> materiais = new ArrayList<>();
+        try {
+            
+            StringBuilder sqlq = new StringBuilder("SELECT * FROM Material WHERE ");
 
+            Set<String> keys = map.keySet();
+            Iterator<String> it = keys.iterator();
+
+            String key;
+            while (it.hasNext()) {
+                key = it.next();
+                sqlq.append(key);
+                sqlq.append(" = ");
+                sqlq.append("'").append(map.get(key)).append("'");
+                if (it.hasNext()) {
+                    sqlq.append(" AND ");
+                }
+            }
+
+             pst = conn.getConnection().prepareStatement(sqlq.toString());
+
+            ResultSet rs = pst.executeQuery();
+            
+
+            while (rs.next()) {
+                Material bloco = montarMaterial(rs);
+
+                materiais.add(bloco);
+            }
+
+            
+        } catch (SQLException ex) {
+            
+        } finally {
+             try {
+                conn.closeAll(pst);
+            } catch (DataBaseException ex) {
+                Logger.getLogger(UsuarioAdmDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return materiais;
+    }
+    
     private Material montarMaterial(ResultSet rs) throws SQLException {
         Material material = new Material();
         material.setTombamento(rs.getLong("tombamento"));

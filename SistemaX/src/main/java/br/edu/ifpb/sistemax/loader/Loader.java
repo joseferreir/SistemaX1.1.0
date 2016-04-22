@@ -10,8 +10,10 @@ import br.edu.ifpb.sistemax.DAO.FeriadoDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
 import br.edu.ifpb.sistemax.DAO.SalaDAO;
 import br.edu.ifpb.sistemax.Factoy.Factoy;
+import br.edu.ifpb.sistemax.conexao.DataBaseException;
 import br.edu.ifpb.sistemax.entidades.Bloco;
 import br.edu.ifpb.sistemax.entidades.Evento;
+import br.edu.ifpb.sistemax.entidades.EventoDTO;
 import br.edu.ifpb.sistemax.entidades.Feriado;
 import br.edu.ifpb.sistemax.entidades.Material;
 import br.edu.ifpb.sistemax.entidades.Sala;
@@ -26,6 +28,7 @@ import br.edu.ifpb.sistemax.model.UsuarioCadastrarBO;
 import static java.awt.PageAttributes.MediaType.C;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.time.Instant;
@@ -48,7 +51,7 @@ import sun.security.krb5.internal.ccache.CCacheInputStream;
  */
 public class Loader {
 
-    public static void main(String[] args) throws EmailExistenteException, NomeUsuarioExistenteException, FeriadoException, IOException, FileNotFoundException, ParseException {
+    public static void main(String[] args) throws EmailExistenteException, NomeUsuarioExistenteException, FeriadoException, IOException, FileNotFoundException, ParseException, DataBaseException, SQLException, ClassNotFoundException {
 //        UsuarioAdmDAO s = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO();
 //          Usuario u = new Usuario("000032", "mariaw", "maria2@gmail.com", "wSew12@#32", "foto4", true, PapelUser.Administrador);
 //        Map<String, String> aa = new HashMap<String, String>();
@@ -102,7 +105,7 @@ public class Loader {
                 e.emAndatento();
                 EventoDAO dao = new EventoDAO();
         boolean ddd = dao.add(e);
-       // System.err.println("dddd "+ddd);
+        System.err.println("dddd "+ddd);
         Evento p;
        // p = dao.buscaPorId(1);
                 //  System.err.println("resultado "+p.getEstado());
@@ -122,12 +125,16 @@ public class Loader {
         m.setTombamento(1000004);
         m.setLocal(sala0);
       Map  map = new HashMap();
-      map.put("descricao", "ap");
-        Material l = Factoy.criarFactoy(Factoy.DAO_BD).criaMaterialDAO().busvarPorTombamento(m.getTombamento());
-      //  for (int j = 0; j < l.size(); j++) 
-            
+      map.put("estado", Integer.toString(1));
+        map.put("local", Integer.toString(1));
+        // List l = Factoy.criarFactoy(Factoy.DAO_BD).criaMaterialDAO().buscarAtributos(map);
+        // for (int j = 0; j < l.size(); j++)
+        // System.err.println("resultado mat "+l.get(j).toString());
+      //  List<EventoDTO> l = dao.listarNaoFinalizados();
+      //  for (int j = 0; j < l.size(); j++)
+         //   System.err.println("resultado mat "+l.get(j).getSituacao());
         
-        System.err.println("resultado mat "+l.getEstado());
+        
    }
 
 }

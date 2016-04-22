@@ -60,4 +60,9 @@ public class Material {
         this.estado = this.estado.disponivel();
     }
 
+    @Override
+    public String toString() {
+        return "Material{" + "descricao=" + descricao + ", estado=" + estado .toString()+ ", local=" + local + ", tombamento=" + tombamento + '}';
+    }
+
 }

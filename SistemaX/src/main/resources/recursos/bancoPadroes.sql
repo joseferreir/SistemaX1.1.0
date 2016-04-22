@@ -50,7 +50,7 @@ CREATE TABLE Material (
 
 CREATE TABLE Evento (
     id SERIAL,
-    nome VARCHAR(50) NOT NULL,
+    nome VARCHAR(50) NOT NULL UNIQUE,
     descricao TEXT,
     numeroParticipantes INT NOT NULL,
     idResponsavel INT NOT NULL,
