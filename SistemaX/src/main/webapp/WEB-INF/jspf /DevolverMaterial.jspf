@@ -1,0 +1,60 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<form class="form-horizontal">
+    <fieldset>
+        <!-- Form Name -->
+        <legend>Desvolver material</legend>
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="evento">Evento</label>  
+            <div class="col-md-6">
+                <input id="evento" name="evento" type="text" placeholder="" class="form-control input-md">
+
+            </div>
+        </div>       
+        <div class="form-group"> 
+            <div class="col-md-12">
+
+                <!-- Select Multiple -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="fim"></label> 
+                    <div class="col-md-4">
+                        <table border="1" class="table-striped col-md-8 text-align-center">
+                            <thead>
+                                <tr>
+                                    <th>Material</th>
+                                    <th>Tombamento</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>DataShow</td>
+                                    <td>1892651</td>
+                                    <td><button id="butao1" name="butao1" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button> </td>
+                                </tr>
+                                <tr>
+                                    <td>Cabo HDMI</td>
+                                    <td>12568554</td>
+                                    <td><input class="glyphicon glyphicon-ok" type="checkbox" name="confirmar" value="ON" /></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="butao1"></label>
+            <div class="col-md-8">
+                <button id="butao2" name="butao2" class="btn btn-danger "><span class="glyphicon glyphicon-ban-circle"></span> Cancelar</button>
+                <button id="butao1" name="butao1" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Salvar</button>    
+            </div>
+        </div>
+
+    </fieldset>
+</form>
