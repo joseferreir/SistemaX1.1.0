@@ -53,12 +53,12 @@ a, a:hover, a:focus{
 }
 
 /* breadcrumb customize */
-.breadcrumb {background: rgba(143); border: 0px solid rgba(245, 245, 245, 1); border-radius: 4px; display: block;}
+.breadcrumb {background: rgba(149, 146, 209, 0.7); border: 0px solid rgba(245, 245, 245, 1); border-radius: 4px; display: block;}
 .breadcrumb li {font-size: 12px;}
-.breadcrumb a {color: rgba(255, 25t, 255, 1);}
+.breadcrumb a {color: rgba(255, 255, 255, 1);}
 .breadcrumb a:hover {color: rgba(0, 0, 0, 1);}
 .breadcrumb>.active {color: rgba(255, 255, 255, 1);}
-.breadcrumb>li+li:before {color: rgba(254, 255, 255, 1); content: "\276F\00a0";}
+.breadcrumb>li+li:before {color: rgba(255, 255, 255, 1); content: "\276F\00a0";}
 
 .panel-option{
 	width: 150px;
@@ -151,7 +151,7 @@ div.zabuto_calendar .table td{
 }
 div.zabuto_calendar .table td.dow-clickable:hover{
 	background-color: rgba(149, 146, 209, 0.7) !important;
-	color: #255625;
+	color: white;
 }
 
 .badge-event{

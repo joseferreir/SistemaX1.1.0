@@ -1,26 +1,17 @@
-<%-- 
-    Document   : Administrador
-    Created on : 20/03/2016, 10:43:09
-    Author     : José
---%>
+
 <%@page import="br.edu.ifpb.sistemax.entidades.Usuario"%>
-<% 
-  Usuario  usuario =(Usuario)  session.getAttribute("user");
-  pageContext.setAttribute("admin", usuario);
-%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/style-pages.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
-        <img src="${admin.foto}" style="width: 100px ;height: 80px;">
-        <h3>  ${admin.nome}</h3>
-        <h1>pagina admin!</h1>
-        <img src="img/logo-ifpb.png" alt="logo">
-        <a href="Teste.jsp">teste</a>
-        <p>alguma coisa muito doida</p>
+        <%@include file="paginas/BarraUsuario.jsp"%>
     </body>
 </html>
