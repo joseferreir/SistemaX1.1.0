@@ -8,26 +8,30 @@ package br.edu.ifpb.sistemax.entidades;
 import br.edu.ifpb.sistemax.state.EventoPendente;
 import br.edu.ifpb.sistemax.state.EventoState;
 import java.sql.Timestamp;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
 
 /**
  *
  * @author José
  */
-public class Evento {
+public class Evento implements Observable<Usuario>{
 
     private int id;
     private String nome;
     private String descricao;
     private int numParticipantes;
-    private String responsavel;
+    private Usuario responsavel;
     private Timestamp dataInicio;
     private Timestamp dataTermino;
     private EventoState estado;
   private Sala sala;
+  private List<Observer<Usuario>> observadores;
 
     public Evento() {
         this.estado = new EventoPendente();
+        this.observadores = new LinkedList<Observer<Usuario>>();
     }
 
     public void setId(int id) {
@@ -62,13 +66,15 @@ public class Evento {
         this.numParticipantes = numParticipantes;
     }
 
-    public String getResponsavel() {
+    public Usuario getResponsavel() {
         return responsavel;
     }
 
-    public void setResponsavel(String responsavel) {
+    public void setResponsavel(Usuario responsavel) {
         this.responsavel = responsavel;
     }
+
+   
 
     public Timestamp getDataInicio() {
         return dataInicio;
@@ -142,7 +148,27 @@ public class Evento {
         }
         return true;
     }
-    
+
+    @Override
+	public void addObserver(Observer newObserver) {
+		this.observadores.add(newObserver);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		this.observadores.remove(observer);
+	}
+	
+	public void addChamada(Usuario usuario,String responsavelPorExSala) {
+		notifyObservers(usuario,responsavelPorExSala);
+	}
+
+	@Override
+	public void notifyObservers(Usuario object,String responsavelPorExSala) {
+		for (Observer observer : observadores) {
+			observer.update(object,responsavelPorExSala);
+		}
+	} 
     
 
 }

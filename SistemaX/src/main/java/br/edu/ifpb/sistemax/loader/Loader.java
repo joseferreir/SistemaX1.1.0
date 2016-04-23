@@ -100,19 +100,24 @@ public class Loader {
         e.setDescricao("testo 2");
                 e.setNome("padroes 2");
                 e.setNumParticipantes(20);
-                e.setResponsavel("Administrador");
+               // e.setResponsavel("Administrador");
                 sala0.setId(1);
                 e.setSala(sala0);
                 e.emAndatento();
                 e.setId(2);
                 EventoDAO dao = new EventoDAO();
-       boolean ddd = dao.add(e);
-        System.err.println("dddd "+ddd);
-        Evento p;
-       // p = dao.buscaPorId(1);
-                //  System.err.println("resultado "+p.getEstado());
-//                UsuarioAdmDAO s = new UsuarioAdmDAO();
-//        Usuario u = s.buscaPorId(1);
+     //  boolean ddd = dao;
+       // System.err.println("dddd "+ddd);
+        Evento qe;
+        qe = dao.buscaPorId(2);
+                 
+                UsuarioAdmDAO s = new UsuarioAdmDAO();
+        Usuario u = s.buscaPorId(1);
+        qe.setNome("Aula de padroes");
+        System.err.println("user"+u.getNome());
+        u.setNome("Diogo Moreira");
+        u.update(qe,"maria");
+        
 //       // System.err.println("uuu "+u.getNome());
      //   Evento rr = dao.buscaPorId(1);
 //        System.err.println("eeee  "+rr.getEstado().getClass().getSimpleName());
@@ -132,11 +137,11 @@ public class Loader {
         // List l = Factoy.criarFactoy(Factoy.DAO_BD).criaMaterialDAO().buscarAtributos(map);
         // for (int j = 0; j < l.size(); j++)
 //        // System.err.println("resultado mat "+l.get(j).toString());
-//        List<Material> s = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarAtributosNaoExatos(map);
+    //    List<EventoDTO> s = Factoy.criarFactoy(Factoy.DAO_BD).criaEventoDAO().listarNaoFinalizados();
 //
 //        for (int j = 0; j < s.size(); j++) {
-//            Material w = s.get(j);
-//            System.err.println("resultado mat " + w.getDescricao());
+//            EventoDTO w = s.get(j);
+//            System.err.println("resultado mat " + w.getSituacao());
 //        }
 //        
    }

@@ -6,6 +6,7 @@
 package br.edu.ifpb.sistemax.DAO;
 
 import br.edu.ifpb.sistemax.entidades.Evento;
+import br.edu.ifpb.sistemax.entidades.EventoDTO;
 import java.util.List;
 
 /**
@@ -27,6 +28,10 @@ public interface EventoDAOIF {
     public Evento buscaPorReponsavel(int idResponsavel);
 
     public List<Evento> buscaPorSala(int idSala);
+
+    public List<EventoDTO> listarNaoFinalizados();
+
+    public List<EventoDTO> listarEventosDTO();
     
 
 }

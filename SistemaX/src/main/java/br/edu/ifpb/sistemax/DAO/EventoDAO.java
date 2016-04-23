@@ -127,7 +127,7 @@ public class EventoDAO implements EventoDAOIF {
             pst.setString(1, evento.getNome());
             pst.setString(2, evento.getDescricao());
             pst.setInt(3, evento.getNumParticipantes());
-            Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorNome(evento.getResponsavel());
+            Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorId(evento.getResponsavel().getId());
             pst.setInt(4, responsavel.getId());
             pst.setTimestamp(5, evento.getDataInicio());
             pst.setTimestamp(6, evento.getDataTermino());
@@ -188,7 +188,7 @@ public class EventoDAO implements EventoDAOIF {
         Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioDAO().buscaPorId(rs.getInt("idResponsavel"));
         Sala sala = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarSala(rs.getInt("local"));
         e.setSala(sala);
-        e.setResponsavel(responsavel.getNome());
+        e.setResponsavel(responsavel);
         e.setNumParticipantes(rs.getInt("numeroParticipantes"));
         int op = rs.getInt("estado");
         
@@ -211,8 +211,9 @@ public class EventoDAO implements EventoDAOIF {
         return e;
         
     }
-// metodo com erro
-    public List<EventoDTO> listarNaoFinalizados() throws DataBaseException {
+
+    @Override
+    public List<EventoDTO> listarNaoFinalizados() {
          List<EventoDTO> eventos = new ArrayList<>();
         
         try {
@@ -237,13 +238,18 @@ public class EventoDAO implements EventoDAOIF {
             ex.printStackTrace();
          //   return null;
         } finally {
-            conn.closeAll(pst);
+             try {
+                 conn.closeAll(pst);
+             } catch (DataBaseException ex) {
+                 Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
+             }
         }
          return eventos;
           
     }
-    // metodo com erro
-    public List<EventoDTO> listarEventosDTO() throws DataBaseException {
+    
+    @Override
+    public List<EventoDTO> listarEventosDTO()  {
         List<EventoDTO> eventos = new ArrayList<>();
         try {
             
@@ -264,7 +270,11 @@ public class EventoDAO implements EventoDAOIF {
             ex.printStackTrace();
             
         } finally {
-            conn.closeAll(pst);
+            try {
+                conn.closeAll(pst);
+            } catch (DataBaseException ex) {
+                Logger.getLogger(EventoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
             return eventos;
     }

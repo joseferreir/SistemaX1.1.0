@@ -27,7 +27,7 @@ public class EventoValidar {
         if (evento.getNumParticipantes() <= 0) {
             erros.put("participantes", "Infome o número de participântes");
         }
-        if (evento.getResponsavel().trim().isEmpty()) {
+        if (evento.getResponsavel()==null) {
             erros.put("reponsavel", "Infome o nome do responsavel pelo evento");
         }
         if (evento.getDataInicio() == null) {

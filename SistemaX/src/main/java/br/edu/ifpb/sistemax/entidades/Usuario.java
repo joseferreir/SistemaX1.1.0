@@ -6,6 +6,7 @@
 package br.edu.ifpb.sistemax.entidades;
 
 import br.edu.ifpb.sistemax.enuns.PapelUser;
+import br.edu.ifpb.sistemax.model.EnviarEmail;
 
 /**
  * Classe para objetos do tipo Usuario, onde serão contidos, valores e métodos
@@ -18,7 +19,7 @@ import br.edu.ifpb.sistemax.enuns.PapelUser;
  * @since Release 02 da aplicação
  *
  */
-public class Usuario implements Comparable<Usuario> {
+public class Usuario implements Comparable<Usuario> , Observer<Evento> {
     private Integer id;
 
     public Integer getId() {
@@ -213,6 +214,12 @@ public class Usuario implements Comparable<Usuario> {
     public int compareTo(Usuario o) {
 
         return this.nome.toUpperCase().compareTo(o.getNome().toUpperCase());
+    }
+
+    @Override
+    public void update(Evento object,String responsavelPorExSala) {
+        EnviarEmail email = new EnviarEmail();
+        email.enviarEmail(this, object,responsavelPorExSala);
     }
 
 }

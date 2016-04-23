@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.sistemax.command;
 
+import br.edu.ifpb.sistemax.Factoy.Factoy;
 import br.edu.ifpb.sistemax.entidades.Evento;
 import br.edu.ifpb.sistemax.entidades.Usuario;
 import br.edu.ifpb.sistemax.enuns.PapelUser;
@@ -52,7 +53,8 @@ public class EventoAlterar implements Command {
     private Evento atualizarEvento(HttpServletRequest request, Evento e) {
         e.setNome(request.getParameter("nome"));
         e.setDescricao(request.getParameter("descricao"));
-        e.setResponsavel(request.getParameter("responsavel"));
+         Usuario responsavel = Factoy.criarFactoy(Factoy.DAO_BD).criaUsuarioAdmDAO().buscaPorId(Integer.parseInt(request.getParameter("idresponsavel")));
+        e.setResponsavel(responsavel);
         e.setNumParticipantes(Integer.parseInt("numeroParticipantes"));
         e.setDataInicio(Timestamp.valueOf(request.getParameter("dataInicio")));
         e.setDataTermino(Timestamp.valueOf(request.getParameter("dataInicio")));
