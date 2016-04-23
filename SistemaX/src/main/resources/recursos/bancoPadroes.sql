@@ -43,8 +43,8 @@ CREATE TABLE Material (
     descricao VARCHAR(60) NOT NULL, 
     tombamento INT NOT NULL, 
     estado INT NOT NULL DEFAULT 1, 
-    local INT DEFAULT NULL, 
-    FOREIGN KEY(local) REFERENCES Sala(id),
+    local INT DEFAULT NULL , 
+    FOREIGN KEY(local) REFERENCES Sala(id) ON DELETE SET NULL ,
     PRIMARY KEY (tombamento)
 );
 
@@ -58,7 +58,7 @@ CREATE TABLE Evento (
     dataTermino TIMESTAMP NOT NULL UNIQUE,
     estado INT NOT NULL DEFAULT 1,
     local INT ,
- FOREIGN KEY (local) REFERENCES Sala(id) ON DELETE CASCADE,
+ FOREIGN KEY (local) REFERENCES Sala(id) ON DELETE SET NULL,
 PRIMARY KEY (id)
 );
 
