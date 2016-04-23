@@ -5,6 +5,7 @@
  */
 package br.edu.ifpb.sistemax.DAO;
 
+import br.edu.ifpb.sistemax.entidades.Evento;
 import br.edu.ifpb.sistemax.entidades.Sala;
 import java.util.List;
 import java.util.Map;
@@ -26,4 +27,6 @@ public interface SalaDAOIF {
     public List<Sala> buscarAtributosNaoExatos(Map<String, String> map);
 
     public List<Sala> buscarTodas();
+
+    
 }

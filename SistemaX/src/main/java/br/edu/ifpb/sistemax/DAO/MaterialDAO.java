@@ -169,11 +169,12 @@ public class MaterialDAO implements MaterialDAOIF {
         }
         return Collections.EMPTY_LIST;
     }
+
     @Override
- public List<Material> buscarAtributos(Map<String, String> map) {
-     List<Material> materiais = new ArrayList<>();
+    public List<Material> buscarAtributos(Map<String, String> map) {
+        List<Material> materiais = new ArrayList<>();
         try {
-            
+
             StringBuilder sqlq = new StringBuilder("SELECT * FROM Material WHERE ");
 
             Set<String> keys = map.keySet();
@@ -190,10 +191,9 @@ public class MaterialDAO implements MaterialDAOIF {
                 }
             }
 
-             pst = conn.getConnection().prepareStatement(sqlq.toString());
+            pst = conn.getConnection().prepareStatement(sqlq.toString());
 
             ResultSet rs = pst.executeQuery();
-            
 
             while (rs.next()) {
                 Material bloco = montarMaterial(rs);
@@ -201,11 +201,10 @@ public class MaterialDAO implements MaterialDAOIF {
                 materiais.add(bloco);
             }
 
-            
         } catch (SQLException ex) {
-            
+
         } finally {
-             try {
+            try {
                 conn.closeAll(pst);
             } catch (DataBaseException ex) {
                 Logger.getLogger(UsuarioAdmDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -213,19 +212,26 @@ public class MaterialDAO implements MaterialDAOIF {
         }
         return materiais;
     }
-    
+
     private Material montarMaterial(ResultSet rs) throws SQLException {
         Material material = new Material();
         material.setTombamento(rs.getLong("tombamento"));
         material.setDescricao(rs.getString("descricao"));
         Sala sala = Factoy.criarFactoy(Factoy.DAO_BD).criaSalaDAO().buscarSala(rs.getInt("local"));
-        System.err.println("estado ss "+rs.getInt("estado"));
+        System.err.println("estado ss " + rs.getInt("estado"));
         if (rs.getInt("estado") == 1) {
             material.disponivel();
-        }else
-        material.emprestado();
+        } else {
+            material.emprestado();
+        }
         material.setLocal(sala);
         return material;
+    }
+
+    @Override
+    public List<Material> buscarDsponivel() {
+        String sql = "SELECT * FROM Material WHERE local is null";
+        return bucarNoBD(sql);
     }
 
 }

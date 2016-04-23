@@ -27,5 +27,6 @@ public interface EventoDAOIF {
     public Evento buscaPorReponsavel(int idResponsavel);
 
     public List<Evento> buscaPorSala(int idSala);
+    
 
 }

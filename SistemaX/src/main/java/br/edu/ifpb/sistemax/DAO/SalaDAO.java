@@ -8,6 +8,7 @@ package br.edu.ifpb.sistemax.DAO;
 import br.edu.ifpb.sistemax.conexao.Conexao;
 import br.edu.ifpb.sistemax.conexao.ConexaoIF;
 import br.edu.ifpb.sistemax.conexao.DataBaseException;
+import br.edu.ifpb.sistemax.entidades.Evento;
 import br.edu.ifpb.sistemax.entidades.Sala;
 import br.edu.ifpb.sistemax.enuns.EstadoSala;
 import java.io.IOException;
@@ -203,7 +204,7 @@ public class SalaDAO implements SalaDAOIF {
 
         return resultado;
     }
-    
+   
     private Sala montarSala(ResultSet rs) throws SQLException {
         Sala sala = new Sala();
         sala.setId(rs.getInt("id"));

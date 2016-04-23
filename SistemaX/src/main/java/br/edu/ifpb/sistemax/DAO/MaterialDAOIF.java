@@ -26,6 +26,8 @@ public interface MaterialDAOIF {
     public List<Material> busvarTodos();
 
     public Material busvarPorDescricao(String descricao);
-    
-public List<Material> buscarAtributos(Map<String, String> map);
+
+    public List<Material> buscarAtributos(Map<String, String> map);
+
+    public List<Material> buscarDsponivel();
 }

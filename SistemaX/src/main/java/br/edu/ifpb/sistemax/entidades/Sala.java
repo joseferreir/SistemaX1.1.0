@@ -4,6 +4,7 @@ package br.edu.ifpb.sistemax.entidades;
 import br.edu.ifpb.sistemax.state.SalaDisponivel;
 import br.edu.ifpb.sistemax.state.SalaState;
 import br.edu.ifpb.sistemax.state.SalaIndisponivel;
+import java.util.Objects;
 
 /**
  *
@@ -94,6 +95,31 @@ public class Sala {
     public String toString() {
         return "Sala{" + "id=" + id + ", nome=" + nome + ", idBloco=" + idBloco + ", capacidade=" + capacidade + ", estado=" + estado + ", tipo=" + tipo + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Sala other = (Sala) obj;
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (this.capacidade != other.capacidade) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
     

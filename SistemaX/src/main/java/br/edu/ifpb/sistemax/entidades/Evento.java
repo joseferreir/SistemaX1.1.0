@@ -8,6 +8,7 @@ package br.edu.ifpb.sistemax.entidades;
 import br.edu.ifpb.sistemax.state.EventoPendente;
 import br.edu.ifpb.sistemax.state.EventoState;
 import java.sql.Timestamp;
+import java.util.Objects;
 
 /**
  *
@@ -114,6 +115,34 @@ public class Evento {
     public void setSala(Sala sala) {
         this.sala = sala;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Evento other = (Evento) obj;
+        if (!Objects.equals(this.dataInicio, other.dataInicio)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataTermino, other.dataTermino)) {
+            return false;
+        }
+        if (!Objects.equals(this.sala, other.sala)) {
+            return false;
+        }
+        return true;
+    }
+    
     
 
 }
