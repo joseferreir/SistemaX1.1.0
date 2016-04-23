@@ -113,7 +113,7 @@ public class EventoDAO implements EventoDAOIF {
     
     @Override
     public List<Evento> buscaPorSala(int idSala) {
-        sql = "SELECT * FROM Evento ,alocacao al WHERE al.idSala='" + idSala + "' AND evento.id=al.idEvento ";
+        sql = "SELECT * FROM Evento,Sala  WHERE evento.local=Sala.id ";
         return bucarNoBD(sql);
     }
     

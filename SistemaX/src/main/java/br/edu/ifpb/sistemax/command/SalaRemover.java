@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package br.edu.ifpb.sistemax.command;
+import br.edu.ifpb.sistemax.entidades.Usuario;
+import br.edu.ifpb.sistemax.enuns.PapelUser;
 import br.edu.ifpb.sistemax.model.RemoverUsuarioBO;
+import br.edu.ifpb.sistemax.model.SalaRemoverBO;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -24,8 +27,12 @@ public class SalaRemover implements Command {
 
         try {
             
-            RemoverUsuarioBO remover = new RemoverUsuarioBO();
-            boolean result = remover.remover(Integer.parseInt(request.getParameter("id")));
+              Usuario usuario = (Usuario) request.getSession().getAttribute("user");
+            if (usuario.getPapel() != PapelUser.Administrador || usuario.getPapel() != PapelUser.AssistenteDeSala) {
+                response.sendRedirect("pagina");
+            }
+             SalaRemoverBO remover = new  SalaRemoverBO();
+            boolean result = remover.remover(Integer.parseInt(request.getParameter("idSala")),usuario.getNome());
             request.setAttribute("removeu", result);
             RequestDispatcher des = request.getServletContext().getRequestDispatcher("/Administrador.jsp");
             des.forward(request, response);

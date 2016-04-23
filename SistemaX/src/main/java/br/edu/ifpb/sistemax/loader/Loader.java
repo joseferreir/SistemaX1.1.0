@@ -6,44 +6,23 @@
 package br.edu.ifpb.sistemax.loader;
 
 import br.edu.ifpb.sistemax.DAO.EventoDAO;
-import br.edu.ifpb.sistemax.DAO.FeriadoDAO;
 import br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO;
-import br.edu.ifpb.sistemax.DAO.SalaDAO;
-import br.edu.ifpb.sistemax.Factoy.Factoy;
 import br.edu.ifpb.sistemax.conexao.DataBaseException;
-import br.edu.ifpb.sistemax.entidades.Bloco;
 import br.edu.ifpb.sistemax.entidades.Evento;
-import br.edu.ifpb.sistemax.entidades.EventoDTO;
-import br.edu.ifpb.sistemax.entidades.Feriado;
 import br.edu.ifpb.sistemax.entidades.Material;
 import br.edu.ifpb.sistemax.entidades.Sala;
 import br.edu.ifpb.sistemax.entidades.Usuario;
-import br.edu.ifpb.sistemax.enuns.PapelUser;
 import br.edu.ifpb.sistemax.exeption.EmailExistenteException;
 import br.edu.ifpb.sistemax.exeption.FeriadoException;
 import br.edu.ifpb.sistemax.exeption.NomeUsuarioExistenteException;
-import br.edu.ifpb.sistemax.model.FeriadoBuscar;
-import br.edu.ifpb.sistemax.model.FeriadoCadastrarBO;
-import br.edu.ifpb.sistemax.model.UsuarioCadastrarBO;
-import static java.awt.PageAttributes.MediaType.C;
+import br.edu.ifpb.sistemax.model.SalaRemoverBO;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.time.Instant;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.FormatStyle;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import jdk.nashorn.internal.runtime.regexp.JoniRegExp;
-import jdk.nashorn.internal.runtime.regexp.RegExpFactory;
-import jdk.nashorn.internal.runtime.regexp.joni.constants.TokenType;
-import sun.security.krb5.internal.ccache.CCacheInputStream;
 
 /**
  *
@@ -104,19 +83,29 @@ public class Loader {
                 sala0.setId(1);
                 e.setSala(sala0);
                 e.emAndatento();
-                e.setId(2);
+              //  e.setId(3);
                 EventoDAO dao = new EventoDAO();
+               // dao.add(e);
      //  boolean ddd = dao;
        // System.err.println("dddd "+ddd);
         Evento qe;
-        qe = dao.buscaPorId(2);
-                 
+       // int q = dao.desalocarEvento(2);
+                 //System.err.println("desalocol "+q);
                 UsuarioAdmDAO s = new UsuarioAdmDAO();
+                
         Usuario u = s.buscaPorId(1);
-        qe.setNome("Aula de padroes");
+        System.err.println("addddddd  "+u.getId());
+        e.setResponsavel(u);
+       //  dao.add(e);
+       // qe.setNome("Aula de padroes");
         System.err.println("user"+u.getNome());
         u.setNome("Diogo Moreira");
-        u.update(qe,"maria");
+        //   u.update(qe,"maria");
+      // List<Evento> sala12 = dao.buscaPorSala(5);
+       //System.err.println("sala1122323 "+sala12.get(0).getNome());
+        SalaRemoverBO remo = new SalaRemoverBO();
+        boolean zz = remo.remover(6, u.getNome());
+        System.err.println("zzzz  "+zz);
         
 //       // System.err.println("uuu "+u.getNome());
      //   Evento rr = dao.buscaPorId(1);
