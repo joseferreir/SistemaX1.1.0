@@ -1,0 +1,28 @@
+
+<%@page import="br.edu.ifpb.sistemax.entidades.Usuario"%>
+<%@ page pageEncoding="UTF-8" %>
+<header>
+    <%
+        Usuario usuario = (Usuario) session.getAttribute("usuario");
+    %>
+    <div class="container container-full ">
+        <div class="row">
+            <div class="alert alert-info col-lg-12 header-size">
+                <div class="logo-box float-left">
+                    <img src="/img/logo-ifpb.png" alt="..." class="img-rounded logo-img">
+                </div>
+                <div class="header-box float-left header-title">
+                    <h3><strong>Systema ApResSa</strong></h3>
+                    <p>Logado como <% out.print(usuario.getPapel().name()); %> </p>
+                </div>
+
+                <div class="profile-img-box float-right">
+                    <img src="/img/profile/reader-default.png" alt="..." class="img-rounded profile-img">
+                </div>
+                <div class="header-box float-right header-profile">
+                    <h4><strong><% out.print(usuario.getNome());%></strong></h4>
+                    <p><a href="">Editar Perfil</a> | <a href="encerrar_session">Sair</a></p>
+                </div>
+            </div>
+        </div>
+</header>
