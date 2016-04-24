@@ -1,0 +1,33 @@
+<%-- any content can be specified here e.g.: --%>
+<%@ page pageEncoding="UTF-8" %>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Cadastrar Bloco</h3>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <fieldset>
+                <!-- Form Name -->
+                <legend>Cadastrar Bloco</legend>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="descricao">Nome</label>  
+                    <div class="col-md-4">
+                        <input id="nome" name="nome" type="text" placeholder="Nome do bloco" class="form-control input-md">
+                    </div>
+                </div>        
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="butao1"></label>
+                    <div class="col-md-8">
+                        <button id="butao2" name="butao2" class="btn btn-danger "><span class="glyphicon glyphicon-ban-circle"></span> Cancelar</button>
+                        <button id="butao1" name="butao1" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+

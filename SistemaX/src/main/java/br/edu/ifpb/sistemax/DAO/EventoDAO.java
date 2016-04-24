@@ -152,6 +152,10 @@ public class EventoDAO implements EventoDAOIF {
         return result;
         
     }
+    public List<Evento> buscarTodos() {
+        sql = "SELECT * FROM Evento";
+        return bucarNoBD(sql);
+    }
     
     private List<Evento> bucarNoBD(String sql) {
         List<Evento> eventos = new ArrayList<>();
@@ -180,7 +184,7 @@ public class EventoDAO implements EventoDAOIF {
         
         Evento e = new Evento();
         e.setId(rs.getInt("id"));
-        System.err.println("di " + e.getId());
+        System.err.println("id " + e.getId());
         e.setNome(rs.getString("nome"));
         e.setDescricao(rs.getString("descricao"));
         e.setDataInicio(rs.getTimestamp("dataInicio"));
