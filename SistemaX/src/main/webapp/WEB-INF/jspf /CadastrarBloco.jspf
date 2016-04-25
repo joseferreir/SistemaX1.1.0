@@ -5,11 +5,8 @@
         <h3 class="panel-title">Cadastrar Bloco</h3>
     </div>
     <div class="panel-body">
-        <form class="form-horizontal">
+        <form class="form-horizontal" action="">
             <fieldset>
-                <!-- Form Name -->
-                <legend>Cadastrar Bloco</legend>
-                <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="descricao">Nome</label>  
                     <div class="col-md-4">
@@ -21,13 +18,24 @@
                     <label class="col-md-4 control-label" for="butao1"></label>
                     <div class="col-md-8">
                         <button id="butao2" name="butao2" class="btn btn-danger "><span class="glyphicon glyphicon-ban-circle"></span> Cancelar</button>
-                        <button id="butao1" name="butao1" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
+                        <button id="butao1" name="butao1" class="btn btn-success" onclick="addBloco($('#nome').val())"><span class="glyphicon glyphicon-ok"></span> Salvar</button>
                     </div>
                 </div>
 
             </fieldset>
         </form>
     </div>
+    <script type="text/javascript">
+        function addBloco(nome){
+            
+        }
+        function show_success() {
+                $('#sucessModal').modal({
+                    show: 'true'
+                });
+            }
+    </script>
+    
 </div>
 
 

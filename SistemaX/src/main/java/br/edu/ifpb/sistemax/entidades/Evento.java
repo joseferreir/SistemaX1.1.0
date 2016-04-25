@@ -12,11 +12,12 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
+
 /**
  *
  * @author José
  */
-public class Evento implements Observable<Usuario>{
+public class Evento implements Observable<Usuario> {
 
     private int id;
     private String nome;
@@ -26,8 +27,8 @@ public class Evento implements Observable<Usuario>{
     private Timestamp dataInicio;
     private Timestamp dataTermino;
     private EventoState estado;
-  private Sala sala;
-  private List<Observer<Usuario>> observadores;
+    private Sala sala;
+    private List<Observer<Usuario>> observadores;
 
     public Evento() {
         this.estado = new EventoPendente();
@@ -74,8 +75,6 @@ public class Evento implements Observable<Usuario>{
         this.responsavel = responsavel;
     }
 
-   
-
     public Timestamp getDataInicio() {
         return dataInicio;
     }
@@ -100,8 +99,6 @@ public class Evento implements Observable<Usuario>{
         this.estado = estado;
     }
 
-  
-
     public void pendente() {
         this.estado = this.estado.pendente();
     }
@@ -120,6 +117,28 @@ public class Evento implements Observable<Usuario>{
 
     public void setSala(Sala sala) {
         this.sala = sala;
+    }
+
+    public long tempo() {
+        long tempo1 = dataInicio.getTime();
+        long tempo2 = dataTermino.getTime();
+        return tempo2 - tempo1;        
+    }
+    
+    public long duracaoDia() {
+        long t = tempo()/36000000;      
+        return t;
+    }
+    
+    public long duracaoHora() {
+        long t = tempo()/3600000;      
+        return t;
+    }
+
+    public long duracaoMin() {
+        long t = tempo()%3600000;
+        long t2 = t/60000;
+        return t2;
     }
 
     @Override
@@ -150,25 +169,24 @@ public class Evento implements Observable<Usuario>{
     }
 
     @Override
-	public void addObserver(Observer newObserver) {
-		this.observadores.add(newObserver);
-	}
+    public void addObserver(Observer newObserver) {
+        this.observadores.add(newObserver);
+    }
 
-	@Override
-	public void removeObserver(Observer observer) {
-		this.observadores.remove(observer);
-	}
-	
-	public void addChamada(Usuario usuario,String responsavelPorExSala) {
-		notifyObservers(usuario,responsavelPorExSala);
-	}
+    @Override
+    public void removeObserver(Observer observer) {
+        this.observadores.remove(observer);
+    }
 
-	@Override
-	public void notifyObservers(Usuario object,String responsavelPorExSala) {
-		for (Observer observer : observadores) {
-			observer.update(object,responsavelPorExSala);
-		}
-	} 
-    
+    public void addChamada(Usuario usuario, String responsavelPorExSala) {
+        notifyObservers(usuario, responsavelPorExSala);
+    }
+
+    @Override
+    public void notifyObservers(Usuario object, String responsavelPorExSala) {
+        for (Observer observer : observadores) {
+            observer.update(object, responsavelPorExSala);
+        }
+    }
 
 }

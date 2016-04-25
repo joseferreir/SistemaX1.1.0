@@ -1,4 +1,8 @@
 <%-- any content can be specified here e.g.: --%>
+<%@page import="java.util.Collections"%>
+<%@page import="br.edu.ifpb.sistemax.entidades.Usuario"%>
+<%@page import="java.util.List"%>
+<%@page import="br.edu.ifpb.sistemax.DAO.UsuarioAdmDAO"%>
 <%@ page pageEncoding="UTF-8" %>
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -7,11 +11,6 @@
     <div class="panel-body">
         <form class="form-horizontal">
             <fieldset>
-
-                <!-- Form Name -->
-                <legend>Cadastrar Evento</legend>
-
-                <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="nome">Nome</label>  
                     <div class="col-md-5">
@@ -32,7 +31,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="participantes">Participantes</label>  
                     <div class="col-md-4">
-                        <input id="participantes" name="participantes" type="text" placeholder="Participantes" class="form-control input-md">
+                        <input id="participantes" name="participantes" type="number" placeholder="Participantes" class="form-control input-md">
 
                     </div>
                 </div>
@@ -42,7 +41,15 @@
                     <label class="col-md-4 control-label" for="responsavel">Responsável</label>
                     <div class="col-md-5">
                         <select id="responsavel" name="responsavel" class="form-control">
-                            <option value="1">Diogo Dantas Moreira</option>
+                            <%                
+                                UsuarioAdmDAO usuarioDAO = new UsuarioAdmDAO();
+                                List<Usuario> usuarios = usuarioDAO.buscaTotosUsuarios();
+                                Collections.sort(usuarios);
+
+                                for (Usuario u : usuarios) {
+                                    out.print("<option value="+u.getId()+">"+u.getNome()+"</option>");
+                                }
+                            %>                            
                         </select>
                     </div>
                 </div>
@@ -51,7 +58,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="inicio">Início</label>  
                     <div class="col-md-2">
-                        <input id="inicio" name="inicio" type="text" placeholder="  /   / " class="form-control input-md">
+                        <input id="inicio" name="inicio" type="date" placeholder="  /   / " class="form-control input-md">
 
                     </div>
                 </div>
@@ -60,7 +67,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="fim">Fim</label>  
                     <div class="col-md-2">
-                        <input id="fim" name="fim" type="text" placeholder="  /   /" class="form-control input-md">
+                        <input id="fim" name="fim" type="date" placeholder="  /   /" class="form-control input-md">
 
                     </div>
                 </div>

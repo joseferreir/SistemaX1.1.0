@@ -7,10 +7,7 @@
     <div class="panel-body">
         <form class="form-horizontal">
             <fieldset>
-                <!-- Form Name -->
-                <legend>Castastrar Material</legend>
-
-                <!-- Text input-->
+                
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="descricao">Descrição</label>  
                     <div class="col-md-6">

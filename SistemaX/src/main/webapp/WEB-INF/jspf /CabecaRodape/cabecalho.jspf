@@ -1,28 +1,28 @@
-
 <%@page import="br.edu.ifpb.sistemax.entidades.Usuario"%>
-<%@ page pageEncoding="UTF-8" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <header>
     <%
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+
+        Usuario usuario = (Usuario) session.getAttribute("user");
+        pageContext.setAttribute("usuario", usuario);
+
     %>
-    <div class="container container-full ">
-        <div class="row">
-            <div class="alert alert-info col-lg-12 header-size">
-                <div class="logo-box float-left">
-                    <img src="/img/logo-ifpb.png" alt="..." class="img-rounded logo-img">
+    <div class="container container-fluid" style="padding-right: 0%">
+        <div class="row"> 
+            <div class="alert alert-link col-lg-12 header-size">
+
+                <div class="col-lg-6 float-left header-title">
+                    <img src="img/SisApResSaLogo.png">
+                    <p>Logado como: ${usuario.papel} </p>                    
                 </div>
-                <div class="header-box float-left header-title">
-                    <h3><strong>Systema ApResSa</strong></h3>
-                    <p>Logado como <% out.print(usuario.getPapel().name()); %> </p>
+                <div class="float-right col-lg-5 header-profile">
+                    <h4><strong>${usuario.nome}</strong></h4>
+                    <a href="">Editar Perfil</a> - <a href="AppControle?logica=sair">Sair</a>
+                    <img src="${usuario.foto}" class="img-rounded profile-img" style="height: 100px">
+                    
                 </div>
 
-                <div class="profile-img-box float-right">
-                    <img src="/img/profile/reader-default.png" alt="..." class="img-rounded profile-img">
-                </div>
-                <div class="header-box float-right header-profile">
-                    <h4><strong><% out.print(usuario.getNome());%></strong></h4>
-                    <p><a href="">Editar Perfil</a> | <a href="encerrar_session">Sair</a></p>
-                </div>
             </div>
         </div>
 </header>

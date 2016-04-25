@@ -1,4 +1,7 @@
 <%-- any content can be specified here e.g.: --%>
+<%@page import="br.edu.ifpb.sistemax.entidades.Material"%>
+<%@page import="java.util.List"%>
+<%@page import="br.edu.ifpb.sistemax.DAO.MaterialDAO"%>
 <%@ page pageEncoding="UTF-8" %>
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -7,10 +10,6 @@
     <div class="panel-body">
         <form class="form-horizontal">
             <fieldset>
-                <!-- Form Name -->
-                <legend>Selecionar Material</legend>
-
-                <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="evento">Evento</label>  
                     <div class="col-md-6">
@@ -36,10 +35,15 @@
                             <div class="col-md-4">
                                 <label class="col-md-3 control-label" for="filtrar">Material</label>                       
                                 <select id="material" name="material" class="form-control" multiple="multiple">
-                                    <option value="1">Datashow HDMI</option>
-                                    <option value="2">Datashow</option>
-                                    <option value="3">Cabo HDMI</option>
-                                    <option value="4">Cabo HDMI</option>
+                                    <%
+                                        MaterialDAO m2DAO = new MaterialDAO();
+                                        List<Material> mat2 = m2DAO.busvarTodos();
+                                        for (Material m2 : mat2) {
+                                            out.print("<option value=" + m2.getTombamento() + "> " + m2.getDescricao() + ". </option>");
+                                        
+                                        }
+                                        
+                                    %>
                                 </select>
                             </div>
                             <div class="col-md-1 form-group list-group-item">

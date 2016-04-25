@@ -1,4 +1,10 @@
 <%-- any content can be specified here e.g.: --%>
+<%@page import="br.edu.ifpb.sistemax.entidades.Sala"%>
+<%@page import="br.edu.ifpb.sistemax.DAO.SalaDAO"%>
+<%@page import="java.util.Collections"%>
+<%@page import="br.edu.ifpb.sistemax.entidades.Evento"%>
+<%@page import="java.util.List"%>
+<%@page import="br.edu.ifpb.sistemax.DAO.EventoDAO"%>
 <%@ page pageEncoding="UTF-8" %>
 
 <div class="panel panel-default">
@@ -8,51 +14,36 @@
     <div class="panel-body">
         <form class="form-horizontal">
             <fieldset>
-
-                <!-- Form Name -->
-                <legend>Alocar evento</legend>
-
-                <!-- Select Basic -->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="evento">Evento</label>
                     <div class="col-md-8">
                         <select id="evento" name="evento" class="form-control">
-                            <option value="1">Aula de Padrões de Projeto - 40 pessoas - 07/03/2016 das 13:00 às 15:30</option>
+                            <%
+                                EventoDAO eventoDAO1 = new EventoDAO();
+                                List<Evento> evento1 = eventoDAO1.buscarTodos();
+                                for (Evento e1 : evento1) {
+                                    out.print("<option value=" + e1.getId() + ">Evento: " + e1.getNome() + " - " + e1.getDescricao() + ", " + e1.getNumParticipantes() + " pessoas, Responsável: " + e1.getResponsavel().getNome() + ", Data: início-" + e1.getDataInicio() + ", término: " + e1.getDataTermino() + ". </option>");
+                                }
+                            %>
+
                         </select>
                     </div>
                 </div>
-
-
-                <!-- Text input-->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="fim"></label>  
+                    <label class="col-md-4 control-label" for="evento">Sala</label>
                     <div class="col-md-8">
-                        <table border="1" class="table-striped col-md-8 text-align-center">
-                            <thead>
-                                <tr>
-                                    <th>Sala</th>
-                                    <th>Bloco</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Sala 02</td>
-                                    <td>Bloco 02</td>
-                                </tr>
-                                <tr>
-                                    <td>Sala 03</td>
-                                    <td>Bloco 02</td>
-                                </tr>
-                                <tr>
-                                    <td>Laboratório de informática 03</td>
-                                    <td>Bloco 05</td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <select id="sala" name="sala" class="form-control">
+                            <%
+                                SalaDAO salaDAO = new SalaDAO();
+                                List<Sala> sala = salaDAO.buscarTodas();
+
+                                for (Sala s : sala) {
+                                    out.print("<option value=" + s.getId()+ ">Sala: " + s.getNome() + " Capacidade: " + s.getCapacidade() + ", Bloco: " + s.getIdBloco()+ ". </option>");
+                                
+                                }
+                            %>
+
+                        </select>
                     </div>
                 </div>
 

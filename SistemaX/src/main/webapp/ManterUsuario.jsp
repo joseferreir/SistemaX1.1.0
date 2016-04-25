@@ -12,78 +12,103 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Manter usuário</title>
         <link href="css/bootstrap-theme.min.css" rel="stylesheet">
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/style-pages.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
+
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Manter Bloco</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 5%;
+                padding-left: 10%;
+                padding-right: 10%;                
+                padding-bottom: 2%;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+        <link rel="stylesheet" href="css/aluisioIcomoon/style.css">
+        <script src="js/gerenciar_usuarios.js"></script>
+
     </head>
     <body>
-        <%@ include file="paginas/alert_sucess_model.jsp" %>
-        <%@ include file="paginas/alert_error_model.jsp" %>
-        <%@ include file="paginas//editar_usuario_model.jsp" %>
-        <%@ include file="paginas/editar_usuario_model.jsp" %>
-        <%@ include file="paginas/alert_delet_modal.jsp" %>
+        
 
-
-        <%@include file="paginas/BarraUsuario.jsp"%>
-        <div class="container container-full">
-            <ol class="breadcrumb">
-                <li><a href="home">Home</a>
-                </li>
-                <li class="active">Gerenciador de Usuarios</li>
-            </ol>
+        <div class="panel panel-default">
+            <%@include file="WEB-INF/jspf /CabecaRodape/cabecalho.jspf" %>
+            <div class="container container-fluid col-md-12">
+                <ol class="breadcrumb">
+                    <li><a href="Administrador.jsp">Início</a>
+                    </li>
+                    <li class="active">Gerenciamento de Usuários</li>
+                </ol>
+            </div>
+        </div>
+        <br>
+        <div class="DivCadBloco">
+            <!-- cadastrar usuário-->    
         </div>
 
-        <div class="container">
-
-            <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-                        <button class="btn btn-info glyphicon glyphicon-plus" data-toggle="modal" data-target="#cadastrar_modal" ></button>
-                        <button id="btn-editar" class="btn btn-warning glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editar_modal" disabled></button>
-                        <button id="btn-deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletar_modal" disabled></button>
-
-                        <form class="form-inline float-right col-xs-8 no-margin-right">
-                            <div class="form-group col-xs-12 no-margin-right">
-                                <div class="input-group col-xs-12 float-right">
-                                    <input type="text" id="filter" class="form-control" placeholder="Nome ou Email">
-                                    <div class="btn input-group-addon glyphicon glyphicon-search"></div>
-                                </div>
-                            </div>
-                        </form>
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <div class="col-md-4">
+                            <button title="Adicionar usuário" class="btn btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#cadastrar_modal" ></button>
+                            <button title="Editar usuário"id="btn-editar" class="btn btn-warning glyphicon glyphicon-pencil" data-toggle="modal" data-target="#editar_modal" disabled></button>
+                            <button title="Remover usuário"id="btn-deletar" class="btn btn-danger glyphicon glyphicon-trash" data-toggle="modal" data-target="#deletar_modal" disabled></button>
+                        </div>                
+                        <div class="col-md-6">
+                            <input type="text" id="filter" class="form-control" placeholder="Pesquisar usuário" class="col-md-3 form-control btn-group-justified">
+                        </div>
+                        <div class="col-md-1"> 
+                            <button id="butao4" name="butao4" class="btn btn-link"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
                     </div>
+                </div>
+            </div> 
+            <div class="container ">
+                <div class="container col-md-11">
+                    <div class="panel panel-default ">
+                        <table class="table table-bordered table-hover table-selectable">
+                            <thead>
+                                <tr class="alert-info text-align-center">
+                                    <th class="text-align-center">Nome</th>
+                                    <th class="text-align-center">Email</th>
+                                    <th class="text-align-center">Papel</th>
+                                    <!--<th class="text-align-center">Status</th>-->
+                                </tr>
+                            </thead>
+                            <tbody class="searchable">
+                                <%                UsuarioAdmDAO queryUsuario = new UsuarioAdmDAO();
+                                    List<Usuario> usuarios = queryUsuario.buscaTotosUsuarios();
 
-                    <table class="table table-bordered table-hover table-selectable">
-                        <thead>
-                            <tr class="alert-info text-align-center">
+                                    Collections.sort(usuarios);
 
-                                <th class="text-align-center">Nome</th>
-                                <th class="text-align-center">Email</th>
-                                <th class="text-align-center">Papel</th>
-                                <!--<th class="text-align-center">Status</th>-->
-                            </tr>
-                        </thead>
-                        <tbody class="searchable">
-                            <%                UsuarioAdmDAO queryUsuario = new UsuarioAdmDAO();
-                                List<Usuario> usuarios = queryUsuario.buscaTotosUsuarios();
-
-                                Collections.sort(usuarios);
-
-                                for (Usuario u : usuarios) {
-                                    out.print("<tr onclick=\"displayData(" + u.getId() + ")\" >");
-                                    out.print("<th>" + u.getNome() + "</th>");
-                                    out.print("<th>" + u.getEmail() + "</th>");
-                                    out.print("<th>" + u.getPapel().name() + "</th>");
-                                    out.print("</tr>");
-                                }
-                            %>
-                        </tbody>
-                    </table>
+                                    for (Usuario u : usuarios) {
+                                        out.print("<tr onclick=\"displayData(" + u.getId() + ")\" >");
+                                        out.print("<th>" + u.getNome() + "</th>");
+                                        out.print("<th>" + u.getEmail() + "</th>");
+                                        out.print("<th>" + u.getPapel().name() + "</th>");
+                                        out.print("</tr>");
+                                    }
+                                %>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <footer></footer>

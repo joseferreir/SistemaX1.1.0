@@ -2,69 +2,83 @@
 <!DOCTYPE html>  <!--  -->
 <html lang="PT-BR">  <!--  -->
     <head>
-       
+        <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/style-pages.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Administrador</title>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <style>
+            body {
+                padding-top: 5%;
+                padding-left: 10%;
+                padding-right: 10%;                
+                padding-bottom: 2%;
+            }
+        </style>
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+        <link rel="stylesheet" href="css/aluisioIcomoon/style.css">
+
         <title>Login</title>
-
         <link rel="stylesheet" href="css/login.css" type="text/css" >
-         <link rel="stylesheet" href="css/bootstrap.min.css">
-        
-
+        <link rel="stylesheet" href="css/bootstrap.min.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
 
-
-
     </head>
-   
 
-    
     <body>
-        
-        <header> <!--  -->
-
-            <img src="img/logo-ifpb.png" title="Logo...">
 
 
-        </header>  <!--  -->
-        
-                            <div id="alertaErroLogin" class="alert alert-danger alert-dismissible" role="alert" hidden>
-                                <strong>Falha no login!</strong> Informações de login e senha incorretas.
-                            </div>
+        <div id="alertaErroLogin" class="alert alert-danger alert-dismissible" role="alert" hidden>
+            <strong>Falha no login!</strong> Informações de login e senha incorretas.
+        </div>
+
         <article>
             <section class="left">
+                <div style="text-align: center">
+                    <img  title="Sistema ApResSa" alt="Sistema ApResSa" = src="img/SisApResSaLogo.png" style="background: #66ffcc; background-image: image">
+                </div>
+                   
 
                 <form id="formulario" action="AppControle?logica=Logar"  method="post" >
-                    <h2>Login</h2>
                     <p>
-                        <label for="useremail" class="i" data-icon="">login: </label>
-                        <input id="login" type="text" name="login" placeholder="Ex: meuemail@email.com" >
+                        <label for="useremail" class="i" data-icon=""><span class="glyphicon glyphicon-user"></span> Usuário </label>
+                        <input class="input-lg" autofocus="true" id="login" type="text" name="login" placeholder="Ex.: admin@gmail.com" >
                     </p>
                     <p>
-                        <label for="userpassword" class="" data-icon="">Senha: </label>
-                        <input id="senha" type="password" name="senha" placeholder="Ex: M1nhA53nha" >
+                        <label for="userpassword" class="" data-icon=""><span class="glyphicon glyphicon-lock"></span> Senha</label>
+                        <input class="input-lg" id="senha" type="password" name="senha" placeholder="Ex.: xs123Chg%" >
                     </p>
-                    <input  class=" modal-title-center form-singin-headin" name="login" type="submit" value="Login" >
+                    <input  class=" modal-title-center form-singin-headin btn-success btn-info" name="login" type="submit" value="Login" >
                     <!--<input class="btn" name="" type="reset" value="Limpar"  >-->
-                    
-                    
-                    
+
 
                 </form>
 
             </section>
 
         </article>
-        
-          <script src="js/jquery-2.1.4.min.js"></script>
-          <script src="js/bootstrap.min.js"></script>
-        
-        <script>
-              //funções para quando o botão entrar é clicado 
-                $('#btnEntrar').click(function () {
 
-                    var email = $('#login').val();
-                    var pwd = $('#senha').val();
-                    var actionName = "Logar";
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+        <script>
+            //funções para quando o botão entrar é clicado 
+            $('#btnEntrar').click(function () {
+
+                var email = $('#login').val();
+                var pwd = $('#senha').val();
+                var actionName = "Logar";
 
 //                    $.post('Controller', {'email': email, 'password': pwd, 'action': actionName},
 //                            function (response) {
@@ -75,40 +89,40 @@
 //                                }
 //                            });
 
-                    $.ajax({
-                        type: "POST",
-                        url: " AppControle",
+                $.ajax({
+                    type: "POST",
+                    url: " AppControle",
 //                        dataType: "json",
 //                        contentType: 'application/json',
 //                        data: {email: email, password: pwd, action: actionName},
-                        
-                        data: {"login": email, "senha": pwd, "logica": actionName},
-                        success: function (response) {
-                            if (response === "TRUE") {
-                                
-                                $('#alertaErroLogin').show(250);
-                            }
+
+                    data: {"login": email, "senha": pwd, "logica": actionName},
+                    success: function (response) {
+                        if (response === "TRUE") {
+
+                            $('#alertaErroLogin').show(250);
                         }
-                    });
-                });
-
-                
-                //função para quando pressiona ENTER dentro do input da senha ou login 
-                $('#email').keypress(function (e) {
-                    if (e.which === 13) { // se digitar um enter nesse componente (password)
-                        $('#btnEntrar').click();
                     }
                 });
-                
-                $('#password').keypress(function (e) {
-                    if (e.which === 13) { // se digitar um enter nesse componente (password)
-                        $('#btnEntrar').click();
-                    }
-                });
+            });
 
-            
-                
-               
+
+            //função para quando pressiona ENTER dentro do input da senha ou login 
+            $('#email').keypress(function (e) {
+                if (e.which === 13) { // se digitar um enter nesse componente (password)
+                    $('#btnEntrar').click();
+                }
+            });
+
+            $('#password').keypress(function (e) {
+                if (e.which === 13) { // se digitar um enter nesse componente (password)
+                    $('#btnEntrar').click();
+                }
+            });
+
+
+
+
         </script>
     </body>
 </html>

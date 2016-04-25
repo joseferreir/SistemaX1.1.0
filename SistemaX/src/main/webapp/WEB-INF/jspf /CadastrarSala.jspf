@@ -1,15 +1,19 @@
 <%-- any content can be specified here e.g.: --%>
+<%@page import="br.edu.ifpb.sistemax.entidades.Bloco"%>
+<%@page import="br.edu.ifpb.sistemax.DAO.BlocoDAO"%>
+<%@page import="br.edu.ifpb.sistemax.entidades.Sala"%>
+
+<%@page import="java.util.List"%>
+
 <%@ page pageEncoding="UTF-8" %>
+
 <div class="panel panel-default">
     <div class="panel-heading">
         <h3 class="panel-title">Cadastrar Sala</h3>
     </div>
     <div class="panel-body">
         <form class="form-horizontal">
-            <fieldset>
-                <!-- Form Name -->
-                <legend>Cadastrar Sala</legend>
-                <!-- Text input-->
+            <fieldset>                
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="descricao">Descrição</label>  
                     <div class="col-md-4">
@@ -21,11 +25,13 @@
                     <label class="col-md-4 control-label" for="bloco">Bloco</label>
                     <div class="col-md-4">
                         <select id="bloco" name="bloco" class="form-control">
-                            <option value="1">Bloco 01</option>
-                            <option value="2">Bloco 02</option>
-                            <option value="3">Bloco 03</option>
-                            <option value="4">Bloco 04</option>
-                            <option value="5">Bloco 05</option>
+                            <%
+                                BlocoDAO blocoDAO = new BlocoDAO();
+                                List<Bloco> bloco = blocoDAO.buscarTodos();
+                                for (Bloco b : bloco) {
+                                    out.print("<option value="+b.getId()+">"+b.getId()+" - "+b.getNome()+"</option>");
+                                }
+                            %>
                         </select>
                     </div>
                 </div>
@@ -33,7 +39,7 @@
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="capacidade">Capacidade</label>  
                     <div class="col-md-4">
-                        <input id="capacidade" name="capacidade" type="text" placeholder="Capacidade" class="form-control input-md">
+                        <input id="capacidade" name="capacidade" type="number" placeholder="Capacidade" class="form-control input-md">
                     </div>
                 </div>
                 <!-- Select Basic -->
