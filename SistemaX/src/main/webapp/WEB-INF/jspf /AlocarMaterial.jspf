@@ -7,7 +7,7 @@
     <div class="panel-heading">
         <h3 class="panel-title">Alocar Material</h3>
     </div>
-    <div class="panel-body">
+    <div class="panel-body" style="text-align: center">
         <form class="form-horizontal">
             <fieldset>
                 <div class="form-group">
@@ -40,9 +40,9 @@
                                         List<Material> mat2 = m2DAO.busvarTodos();
                                         for (Material m2 : mat2) {
                                             out.print("<option value=" + m2.getTombamento() + "> " + m2.getDescricao() + ". </option>");
-                                        
+
                                         }
-                                        
+
                                     %>
                                 </select>
                             </div>
@@ -64,16 +64,13 @@
                     </div>
                 </div>
 
-                <!-- Button (Double) -->
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="butao1"></label>
-                    <div class="col-md-8">
-                        <button id="butao2" name="butao2" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-right"></span> Pular</button>
-                        <button id="butao1" name="butao1" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Confirmar</button>    
-                    </div>
-                </div>
-
+                
             </fieldset>
+            <a href="AlocarSala.jsp">
+                <button  type="button" id="butao2" name="butao2" class="btn btn-primary"><span class="glyphicon glyphicon-chevron-right"></span> Pular</button>
+            </a>
+            <button type="submit"class="btn btn-success"><span class="glyphicon glyphicon-ok"></span> Confirmar</button>
+
         </form>
 
 

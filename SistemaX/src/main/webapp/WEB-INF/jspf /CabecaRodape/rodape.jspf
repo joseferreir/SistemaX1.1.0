@@ -1,0 +1,23 @@
+<%@page import="br.edu.ifpb.sistemax.entidades.Usuario"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<header>
+    <div class="container container-fluid" style="padding-right: 0%">
+        <div class="row"> 
+            <div class="alert alert-link col-lg-12 header-size">
+
+                <section style="text-align: center">
+                    <img src="img/SisApResSaLogo.png">                     
+                    <p style="text-align: justify">
+                        <a href="https://github.com/joseferreir/SistemaX1.1.0.git">
+                            Sistema desenvolvido para a disciplina de Padrões de Projetos -  2015.2, do curso Superior de Tecnologia em Análise e Desenvolvimento de Sistema do IFPB - Campus Cajazeiras.
+                        </a>
+                    </p>
+                    <p>&copy; <a href="https://github.com/AluisioPereira">AluísioPereira</a>, <a href="https://github.com/joseferreir">JoseFerreira</a>, <a href="https://github.com/Zilderlan">Zilderlan</a> -Alunos <a href="http://www.ifpb.edu.br/campi/cajazeiras/cursos/cursos-superiores-de-tecnologia/analise-e-desenvolvimento-de-sistemas">(ADS IFPB-Cz)</a></p>
+
+                </section>
+            </div>
+        </div>
+    </div>
+</header>
+

@@ -57,13 +57,7 @@
 
     </head>
     <body>
-        <%@ include file="paginas/alert_sucess_model.jsp" %>
-        <%@ include file="paginas/alert_error_model.jsp" %>
-        <%@ include file="paginas//editar_usuario_model.jsp" %>
-        <%@ include file="paginas/editar_usuario_model.jsp" %>
-        <%@ include file="paginas/alert_delet_modal.jsp" %>
-
-
+        
         <div class="panel panel-default">
             <%@include file="WEB-INF/jspf /CabecaRodape/cabecalho.jspf" %>
             <div class="container container-fluid col-md-12">
